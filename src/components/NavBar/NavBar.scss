@@ -1,0 +1,14 @@
+@import '../../assets/styles/variables';
+
+.NavBar {
+    padding: 1rem 8rem !important;
+    .links {
+        width: 20rem;
+        .link {
+            color: $primary_black;
+            &:hover {
+                font-weight: bolder;
+            }
+        }
+    }
+}
