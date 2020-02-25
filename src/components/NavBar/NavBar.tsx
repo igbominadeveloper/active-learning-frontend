@@ -7,7 +7,7 @@ import './NavBar.scss';
 import Logo from '../../assets/images/logo.png';
 
 const NavBar = () => (
-    <div className="NavBar d-flex align-items-center justify-content-between w-100">
+    <div className="NavBar d-flex align-items-center justify-content-between w-100 p-0">
         <Grid.Column width={8}>
         <Image src={Logo} style={{ width: '7rem', height: '7rem' }} />
         </Grid.Column>
