@@ -3,6 +3,7 @@ import { Grid } from 'semantic-ui-react';
 
 import NavBar from '../NavBar';
 import Hero from './Hero';
+import Books from './Books';
 
 import './Landing.scss';
 
@@ -12,6 +13,7 @@ const Landing = () => {
       <Grid columns={16}>
         <NavBar />
         <Hero />
+        <Books />
       </Grid>
     </div>
   );
