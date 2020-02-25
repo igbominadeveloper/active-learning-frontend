@@ -24,7 +24,6 @@ body {
   display: none;
 }
 
-
 // Flex
 .d-flex {
   display: flex !important;
@@ -93,6 +92,9 @@ body {
 .text-center {
   text-align: center;
 }
+.text-right {
+  text-align: right;
+}
 
 // Padding
 .pr-0 {
@@ -155,9 +157,11 @@ body {
 }
 
 // others
+.shadow {
+    box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.08) !important;
+}
 .rounded-corner {
-    box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.08);
-    border-radius: 8px;
+  border: 1px solid $primary_grey;
 }
 
 .cursor-pointer {
