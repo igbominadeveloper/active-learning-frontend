@@ -34,12 +34,10 @@
   },
   "lint-staged": {
     "*.+(js|jsx)": [
-      "eslint --fix",
-      "git add"
+      "eslint --fix"
     ],
     "*.+(json|css|md)": [
-      "prettier --write",
-      "git add"
+      "prettier --write"
     ]
   },
   "browserslist": {
@@ -55,6 +53,8 @@
     ]
   },
   "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
     "husky": "^4.2.3",
     "lint-staged": "^10.0.7"
   }

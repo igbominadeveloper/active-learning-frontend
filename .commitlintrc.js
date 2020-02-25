@@ -16,7 +16,7 @@ module.exports = {
 		'type-enum': [
 			2,
 			'always',
-			[ 'task', 'feature', 'bug' ]
+			[ 'chore', 'feature', 'bug' ]
 		]
 	}
 };
