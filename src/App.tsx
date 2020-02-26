@@ -7,6 +7,7 @@ import NavBar from './components/NavBar';
 import Homepage from './pages/Homepage';
 import LoginPage from './pages/Login';
 import AboutPage from './pages/About';
+import StorePage from './pages/Store';
 
 const App = () => (
   <div className="Layout">
@@ -17,6 +18,7 @@ const App = () => (
           <Route exact path="/" component={Homepage} />
           <Route path="/login" component={LoginPage} />
           <Route path="/about" component={AboutPage} />
+          <Route path="/store" component={StorePage} />
         </Switch>
       </Suspense>
     </Grid>
