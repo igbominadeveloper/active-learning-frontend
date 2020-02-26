@@ -1,0 +1,16 @@
+.Hero {
+    &__text-main {
+        font-size: 48px;
+    }
+    &__text-sub {
+        font-size: 30px;
+    }
+    p {
+        word-break: 'break-all';
+    }
+    &__segments {
+        border: none !important;
+        box-shadow: none !important;
+        background: none !important;
+    }
+}

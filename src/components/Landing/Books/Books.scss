@@ -1,0 +1,28 @@
+@import '../../../assets/styles/variables';
+
+.Books {
+    .details {
+        margin: 2rem;
+    }
+    &__segments {
+        border: none !important;
+        box-shadow: none !important;
+        background: none !important;
+    }
+    .comment {
+        height: 10rem;
+        width: 17rem;
+        padding: 15px;
+        margin-top: 2rem;
+        img {
+            height: 5rem; 
+            width: 5rem; 
+        }
+        .actions {
+            margin: 5px 0;
+            a {
+                color: $primary_color;
+            }
+        }
+    }
+}
