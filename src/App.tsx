@@ -1,16 +1,26 @@
-import React from 'react';
-import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
+import React, { Suspense } from 'react';
+import { Route, Switch } from 'react-router-dom';
+import { Grid } from 'semantic-ui-react';
+
+import NavBar from './components/NavBar';
 
 import Homepage from './pages/Homepage';
 import LoginPage from './pages/Login';
+import AboutPage from './pages/About';
 
 const App = () => (
-  <Router>
-    <Switch>
-      <Route exact path="/" component={Homepage} />
-      <Route path="/login" component={LoginPage} />
-    </Switch>
-  </Router>
+  <div className="Layout">
+    <Grid columns={16}>
+      <NavBar />
+      <Suspense fallback={<div>Loading....</div>}>
+        <Switch>
+          <Route exact path="/" component={Homepage} />
+          <Route path="/login" component={LoginPage} />
+          <Route path="/about" component={AboutPage} />
+        </Switch>
+      </Suspense>
+    </Grid>
+  </div>
 );
 
 export default App;
