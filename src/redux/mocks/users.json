@@ -1,0 +1,23 @@
+[
+  {
+    "username": "igbominadeveloper",
+    "email": "favourafolayan@gmail.com",
+    "password": "password1",
+    "phone": "08135586949",
+    "fullName": "Favour Afolayan"
+  },
+  {
+    "username": "johndoe",
+    "email": "john@example.com",
+    "password": "password1",
+    "phone": "08135586949",
+    "fullName": "John Doe"
+  },
+  {
+    "username": "janedoe",
+    "email": "jane@example.com",
+    "password": "password1",
+    "phone": "08135586949",
+    "fullName": "Jane Doe"
+  }
+]
