@@ -7,6 +7,7 @@ import NavBar from '../components/NavBar';
 
 import AboutPage from './About';
 import Store from './Store';
+import MyProfile from './MyProfile';
 
 const Homepage = () => (
   <div className="Layout">
@@ -16,6 +17,7 @@ const Homepage = () => (
         <Route exact path="/" component={Landing} />
         <Route path="/about" component={AboutPage} />
         <Route path="/store" component={Store} />
+        <Route path="/my-profile" component={MyProfile} />
       </Switch>
     </Grid>
   </div>

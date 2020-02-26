@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react';
+import { Button, Form, Grid, Header, Image, Message, Segment, Icon } from 'semantic-ui-react';
 import { useHistory, Link } from 'react-router-dom';
 
 import Logo from '../../assets/images/logo.png';
@@ -71,8 +71,9 @@ const LoginForm: React.FC<IProps> = ({ authAction, loading, error }) => {
             content={error}
           />
         )}
-        <Message>
-          New to us? <Link to="/register">Sign Up</Link>
+        <Message className="d-flex justify-content-between" style={{ padding: '1rem 5rem'}}>
+          <Link to="/"><Icon name="home" />Back Home</Link>
+          <span>New to us? <Link to="/register">Sign Up</Link></span>
         </Message>
       </Grid.Column>
     </Grid>
