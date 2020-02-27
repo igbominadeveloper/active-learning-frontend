@@ -8,6 +8,7 @@ import NavBar from '../components/NavBar';
 import AboutPage from './About';
 import Store from './Store';
 import MyProfile from './MyProfile';
+import AdminPage from './Admin';
 
 const Homepage = () => (
   <div className="Layout">
@@ -15,9 +16,10 @@ const Homepage = () => (
       <NavBar />
       <Switch>
         <Route exact path="/" component={Landing} />
-        <Route path="/about" component={AboutPage} />
-        <Route path="/store" component={Store} />
-        <Route path="/my-profile" component={MyProfile} />
+        <Route exact path="/about" component={AboutPage} />
+        <Route exact path="/store" component={Store} />
+        <Route exact path="/my-profile" component={MyProfile} />
+        <Route path="/admin" component={AdminPage} />
       </Switch>
     </Grid>
   </div>

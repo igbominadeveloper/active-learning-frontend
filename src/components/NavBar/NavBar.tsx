@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Grid, Image } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+import { Grid, Image, Dropdown } from 'semantic-ui-react';
+import { Link, useHistory } from 'react-router-dom';
 
 import { User } from '../../pages/MyProfile';
 import LogoutModal from '../LogoutModal';
@@ -14,6 +14,7 @@ import './NavBar.scss';
 const NavBar: React.FC = () => {
   const user: User = JSON.parse(LocalStorage.getItem('user'));
   const [showModal, setShowModal] = useState(false);
+  const history = useHistory();
 
   return (
     <div className="NavBar d-flex align-items-center justify-content-between w-100 p-0">
@@ -35,12 +36,21 @@ const NavBar: React.FC = () => {
           </Link>
           {user ? (
             <>
-              <Link to="/my-profile" className="link">
-                Welcome {user.username}
-              </Link>
-              <Link to="#" className="link" onClick={() => setShowModal(true)}>
-                Logout
-              </Link>
+              <Dropdown text={user.username} pointing className="link item">
+                <Dropdown.Menu>
+                  <Dropdown.Item
+                    onClick={() => history.push('/my-profile')}
+                    text="My Profile"
+                  />
+                  {user.role === 'ADMIN' && (
+                    <Dropdown.Item
+                      onClick={() => history.push('/admin')}
+                      text="Admin Dashboard"
+                    />
+                  )}
+                  <Dropdown.Item onClick={() => setShowModal(true)} text="Logout" />
+                </Dropdown.Menu>
+              </Dropdown>
             </>
           ) : (
             <Link to="/login" className="link">
@@ -49,7 +59,7 @@ const NavBar: React.FC = () => {
           )}
         </div>
       </Grid.Column>
-      {showModal && <LogoutModal open={showModal} close={() => setShowModal(false)}/>}
+      {showModal && <LogoutModal open={showModal} close={() => setShowModal(false)} />}
     </div>
   );
 };

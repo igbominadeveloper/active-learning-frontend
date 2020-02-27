@@ -8,8 +8,8 @@ import RegisterPage from './pages/Register';
 const App = () => (
   <Suspense fallback={<div>Loading....</div>}>
     <Switch>
-      <Route path="/login" component={LoginPage} />
-      <Route path="/register" component={RegisterPage} />
+      <Route exact path="/login" component={LoginPage} />
+      <Route exact path="/register" component={RegisterPage} />
       <Route path="/" component={Homepage} />
     </Switch>
   </Suspense>
