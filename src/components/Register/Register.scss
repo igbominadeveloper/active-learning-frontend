@@ -1,0 +1,12 @@
+@import '../../assets/styles/variables';
+
+.RegisterForm {
+    &__showOrHidePassword {
+        position: absolute;
+        right: 20rem;
+        z-index: 2;
+        cursor:pointer;
+        transition:all 0.5s ease;
+        color:$login_color;
+    }
+}

@@ -37,7 +37,7 @@ const MyProfile: React.FC = () => {
         <h3 className="text-left">Transaction History</h3>
         <Feed>
           {[{}, {}, {}, {}].map(() => (
-            <Feed.Event>
+            <Feed.Event key={Math.random().toFixed(5)}>
               <Feed.Label image={BookSmall} />
               <Feed.Content>
                 <Feed.Date>3 days ago</Feed.Date>
