@@ -1,4 +1,4 @@
-import { GET_USERS_SUCCESS, GET_USERS_ERROR, GET_USERS_LOADING } from '../constants';
+import * as ACTIONS from '../constants';
 
 export interface state {
   loading: boolean,
@@ -20,19 +20,22 @@ const usersDefaultState = {
 
 const usersReducer = (state: state = usersDefaultState, action: ActionTypes) => {
   switch (action.type) {
-    case GET_USERS_LOADING:
+    case ACTIONS.GET_USERS_LOADING:
+    case ACTIONS.EDIT_USERS_LOADING:
       return {
         ...state,
         loading: true,
       };
-    case GET_USERS_SUCCESS:
+    case ACTIONS.GET_USERS_SUCCESS:
+    case ACTIONS.EDIT_USERS_SUCCESS:
       return {
         ...state,
         data: action.payload,
         loading: false,
         error: null,
       };
-    case GET_USERS_ERROR:
+    case ACTIONS.GET_USERS_ERROR:
+    case ACTIONS.EDIT_USERS_ERROR:
       return {
         ...state,
         error: action.payload,
