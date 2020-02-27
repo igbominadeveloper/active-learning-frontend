@@ -5,7 +5,8 @@
     "email": "favourafolayan@gmail.com",
     "password": "password1",
     "phone": "08135586949",
-    "fullName": "Favour Afolayan"
+    "fullName": "Favour Afolayan",
+    "role": "ADMIN"
   },
   {
     "id": "_975896",
@@ -13,7 +14,8 @@
     "email": "john@example.com",
     "password": "password1",
     "phone": "08135586949",
-    "fullName": "John Doe"
+    "fullName": "John Doe",
+    "role": "USER"
   },
   {
     "id": "_975897",
@@ -21,6 +23,7 @@
     "email": "jane@example.com",
     "password": "password1",
     "phone": "08135586949",
-    "fullName": "Jane Doe"
+    "fullName": "Jane Doe",
+    "role": "ADMIN"
   }
 ]

@@ -4,18 +4,38 @@ import users from '../mocks/users.json';
 
 import LocalStorage from '../../utils/localstorage';
 
-interface userObject {
-    email: string,
-    password: string,
+interface registerObject {
+    email: string;
+    password: string;
+    phone: string;
+    id: string;
+    fullName: string;
+    username: string;
 };
 
-const authenticateUser = (userDetails: userObject): Promise<any> => new Promise((resolve, reject) => {
+interface loginObject {
+    email: string;
+    password: string;
+}
+
+const authenticateUser = (userDetails: loginObject): Promise<any> => new Promise((resolve, reject) => {
     setTimeout(() => {
         const user = users.find(user => user.email === userDetails.email && user.password === userDetails.password);
         if (user) {
             return resolve(user);
         }
         return reject('Invalid Credentials');
+    }, 2000);
+});
+
+const registerNewUser = (userDetails: registerObject): Promise<any> => new Promise((resolve, reject) => {
+    setTimeout(() => {
+        const existingUser = users.find(user => user.email === userDetails.email || user.phone === userDetails.phone);
+
+        if (existingUser) return reject('Your email and phone number is in use, please choose another');
+        const user: registerObject = { id: `-${Math.random().toFixed(5)}`, ...userDetails };
+        // writeFileSync(filename, JSON.stringify(users));
+        return resolve(user);
     }, 2000);
 });
 
@@ -33,10 +53,22 @@ const authError = (payload: any) => ({
     payload,
 });
 
-export const authAction = (userObject: userObject, history: any) => async (dispatch: Function) => {
+export const loginAction = (userObject: loginObject, history: any) => async (dispatch: Function) => {
     try {
         dispatch(authLoading());
         const response = await authenticateUser(userObject);
+        LocalStorage.addItem('user', JSON.stringify(response));
+        dispatch(authSuccess(response));
+        history.push('/');
+    } catch (errors) {
+        dispatch(authError(errors));
+    }
+};
+
+export const registerAction = (userObject: registerObject, history: any) => async (dispatch: Function) => {
+    try {
+        dispatch(authLoading());
+        const response = await registerNewUser(userObject);
         LocalStorage.addItem('user', JSON.stringify(response));
         dispatch(authSuccess(response));
         history.push('/');

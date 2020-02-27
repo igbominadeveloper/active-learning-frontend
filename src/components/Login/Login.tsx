@@ -5,12 +5,12 @@ import { useHistory, Link } from 'react-router-dom';
 import Logo from '../../assets/images/logo.png';
 
 interface IProps {
-  authAction: Function;
+  loginAction: Function;
   loading: boolean;
   error: any;
 }
 
-const LoginForm: React.FC<IProps> = ({ authAction, loading, error }) => {
+const LoginForm: React.FC<IProps> = ({ loginAction, loading, error }) => {
   const history = useHistory();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -30,7 +30,7 @@ const LoginForm: React.FC<IProps> = ({ authAction, loading, error }) => {
         <Header as="h2" color="teal" textAlign="center">
           <Image src={Logo} /> Login to your account
         </Header>
-        <Form size="large" onSubmit={() => authAction({ email, password }, history)}>
+        <Form size="large" onSubmit={() => loginAction({ email, password }, history)}>
           <Segment piled>
             <Form.Input
               fluid
@@ -72,7 +72,7 @@ const LoginForm: React.FC<IProps> = ({ authAction, loading, error }) => {
           />
         )}
         <Message className="d-flex justify-content-between" style={{ padding: '1rem 5rem'}}>
-          <Link to="/"><Icon name="home" />Back Home</Link>
+          <Link to="/"><Icon name="reply" />Back Home</Link>
           <span>New to us? <Link to="/register">Sign Up</Link></span>
         </Message>
       </Grid.Column>
