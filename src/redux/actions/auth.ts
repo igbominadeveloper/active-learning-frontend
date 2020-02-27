@@ -1,5 +1,7 @@
 import * as ACTIONS from '../constants';
+
 import users from '../mocks/users.json';
+
 import LocalStorage from '../../utils/localstorage';
 
 interface userObject {

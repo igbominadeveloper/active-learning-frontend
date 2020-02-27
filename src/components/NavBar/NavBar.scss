@@ -2,12 +2,14 @@
 
 .NavBar {
     .links {
-        width: 20rem;
+        min-width: 20rem;
+        width: auto;
         .link {
             color: $primary_black;
             font-size: medium;
+            padding: 0 0.6rem;
             &:hover {
-                font-weight: bolder;
+                font-weight: bold;
             }
         }
     }

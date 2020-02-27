@@ -1,5 +1,6 @@
 [
   {
+    "id": "_975895",
     "username": "igbominadeveloper",
     "email": "favourafolayan@gmail.com",
     "password": "password1",
@@ -7,6 +8,7 @@
     "fullName": "Favour Afolayan"
   },
   {
+    "id": "_975896",
     "username": "johndoe",
     "email": "john@example.com",
     "password": "password1",
@@ -14,6 +16,7 @@
     "fullName": "John Doe"
   },
   {
+    "id": "_975897",
     "username": "janedoe",
     "email": "jane@example.com",
     "password": "password1",

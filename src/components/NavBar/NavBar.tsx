@@ -2,6 +2,8 @@ import React from 'react';
 import { Grid, Image } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
+import { User } from '../../pages/MyProfile';
+
 import LocalStorage from '../../utils/localstorage';
 import { logout } from '../../utils/general';
 
@@ -10,9 +12,8 @@ import Logo from '../../assets/images/logo.png';
 import './NavBar.scss';
 
 const NavBar: React.FC = () => {
-  let user: string = LocalStorage.getItem('user');
-  user = JSON.parse(user);
-  
+  const user: User = JSON.parse(LocalStorage.getItem('user'));
+
   return (
     <div className="NavBar d-flex align-items-center justify-content-between w-100 p-0">
       <Grid.Column width={8}>
@@ -32,9 +33,14 @@ const NavBar: React.FC = () => {
             Store
           </Link>
           {user ? (
-            <Link to="#" className="link" onClick={logout}>
-              Logout
-            </Link>
+            <>
+              <Link to="/my-profile" className="link">
+                Welcome {user.username}
+              </Link>
+              <Link to="#" className="link" onClick={logout}>
+                Logout
+              </Link>
+            </>
           ) : (
             <Link to="/login" className="link">
               Login
