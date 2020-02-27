@@ -11,6 +11,7 @@ export interface User {
   username: string;
   phone: string;
   fullName: string;
+  role: string;
 }
 
 const MyProfile: React.FC = () => {
