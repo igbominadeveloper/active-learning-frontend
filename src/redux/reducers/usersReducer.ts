@@ -1,9 +1,10 @@
-import { GET_USERS_SUCCESS, GET_USERS_ERROR, GET_USERS_LOADING } from '../constants';
+import * as ACTIONS from '../constants';
 
 export interface state {
-  loading: boolean,
-  error: any,
-  data: any
+  loading: boolean;
+  error: any;
+  data: any;
+  operationSuccess: boolean
 };
 
 interface ActionTypes {
@@ -11,33 +12,49 @@ interface ActionTypes {
   payload?: any
 }
 
-const usersDefaultState = {
+const usersDefaultState: state = {
   data: {},
   loading: false,
   error: null,
+  operationSuccess: false,
 };
 
 
 const usersReducer = (state: state = usersDefaultState, action: ActionTypes) => {
   switch (action.type) {
-    case GET_USERS_LOADING:
+    case ACTIONS.GET_USERS_LOADING:
+    case ACTIONS.EDIT_USERS_LOADING:
       return {
         ...state,
         loading: true,
       };
-    case GET_USERS_SUCCESS:
+    case ACTIONS.GET_USERS_SUCCESS:
       return {
-        ...state,
-        data: action.payload,
-        loading: false,
-        error: null,
+          ...state,
+          data: action.payload,
+          loading: false,
+          error: null,
       };
-    case GET_USERS_ERROR:
+      case ACTIONS.EDIT_USERS_SUCCESS:
+      return {
+          ...state,
+          data: action.payload,
+          loading: false,
+          error: null,
+          operationSuccess: true,
+      };
+    case ACTIONS.GET_USERS_ERROR:
+    case ACTIONS.EDIT_USERS_ERROR:
       return {
         ...state,
         error: action.payload,
         loading: false,
       };
+    case ACTIONS.CLEAR_SUCCESS:
+      return {
+        ...state,
+        operationSuccess: false,
+      }
     default:
       return state;
   }

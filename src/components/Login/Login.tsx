@@ -4,6 +4,8 @@ import { useHistory, Link } from 'react-router-dom';
 
 import Logo from '../../assets/images/logo.png';
 
+import './Login.scss';
+
 interface IProps {
   loginAction: Function;
   loading: boolean;
@@ -15,6 +17,7 @@ const LoginForm: React.FC<IProps> = ({ loginAction, loading, error }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [formHasErrors, setFormHasErrors] = useState(true);
+  const [showPassword, setShowPassword]  = useState(false);
 
   useEffect(() => {
     if (email.length < 1 || password.length < 1) {
@@ -23,6 +26,8 @@ const LoginForm: React.FC<IProps> = ({ loginAction, loading, error }) => {
       setFormHasErrors(false);
     }
   }, [email, password]);
+
+  const toggleVisible = ():void => setShowPassword(!showPassword);
 
   return (
     <Grid textAlign="center" style={{ height: '100vh' }} verticalAlign="middle">
@@ -34,7 +39,7 @@ const LoginForm: React.FC<IProps> = ({ loginAction, loading, error }) => {
           <Segment piled>
             <Form.Input
               fluid
-              icon="user"
+              icon="mail"
               iconPosition="left"
               placeholder="E-mail address"
               value={email}
@@ -43,15 +48,19 @@ const LoginForm: React.FC<IProps> = ({ loginAction, loading, error }) => {
               required
             />
             <Form.Input
-              fluid
-              icon="lock"
-              iconPosition="left"
-              placeholder="Password"
-              type="password"
-              value={password}
-              onChange={event => setPassword(event.target.value)}
-              required
-            />
+                fluid
+                icon="lock"
+                iconPosition="left"
+                placeholder="Password"
+                value={password}
+                type={showPassword ? 'text' : 'password'}
+                onChange={event => setPassword(event.target.value)}
+                required
+              />
+
+            <div onClick={toggleVisible} className="LoginForm__showOrHidePassword">
+                  {showPassword ? <i className="eye slash icon tbh" /> : <i className="eye icon tbh" />}
+                </div>
 
             <Button
               color="teal"
