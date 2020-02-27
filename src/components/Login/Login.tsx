@@ -38,6 +38,7 @@ const LoginForm: React.FC<IProps> = ({ loginAction, loading, error }) => {
               iconPosition="left"
               placeholder="E-mail address"
               value={email}
+              type="email"
               onChange={event => setEmail(event.target.value)}
               required
             />
