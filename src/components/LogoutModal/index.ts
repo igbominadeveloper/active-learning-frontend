@@ -1,3 +1,3 @@
-import LogoutModal from './LogoutModal';
+import DecisionModal from './DecisionModal';
 
-export default LogoutModal;
+export default DecisionModal;

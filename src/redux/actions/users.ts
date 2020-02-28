@@ -70,3 +70,38 @@ export const editUserData = (id: string, userBody: object) => async (dispatch: F
         dispatch(editUsersError(errors));
     }
 };
+
+const deleteUserSuccess = (payload: any) => ({
+    type: ACTIONS.DELETE_USER_SUCCESS,
+    payload,
+});
+
+const deleteUserLoading = () => ({
+    type: ACTIONS.DELETE_USER_LOADING,
+});
+
+const deleteUserError = (payload: any) => ({
+    type: ACTIONS.DELETE_USER_ERROR,
+    payload,
+});
+
+
+const deleteUser = (id: string): Promise<any> => new Promise((resolve, reject) =>
+    setTimeout(() => {
+        if(users) {
+            const indexToDelete = users.findIndex(user => user.id === id);
+            users.splice(indexToDelete, 1);
+            return resolve(users)
+        }
+        return reject('An Error occured');
+    }, 2000));
+
+export const deleteUserAccount = (id: string) => async (dispatch: Function) => {
+    try {
+        dispatch(deleteUserLoading());
+        const response = await deleteUser(id);
+        dispatch(deleteUserSuccess(response));
+    } catch (errors) {
+        dispatch(deleteUserError(errors));
+    }
+};

@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import Users from './Users';
 
-import { fetchAllUsers, editUserData, clearSuccess } from '../../../redux/actions/users';
+import { fetchAllUsers, editUserData, clearSuccess, deleteUserAccount } from '../../../redux/actions/users';
 
 const mapStateToProps = (state: any) => ({
     users: state.users.data,
@@ -11,4 +11,4 @@ const mapStateToProps = (state: any) => ({
 });
 
 
-export default connect(mapStateToProps, { fetchAllUsers, editUserData, clearSuccess })(Users);
+export default connect(mapStateToProps, { fetchAllUsers, editUserData, clearSuccess, deleteUserAccount })(Users);
