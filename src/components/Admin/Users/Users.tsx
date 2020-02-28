@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Table } from 'semantic-ui-react';
 
 import Header from '../Tables/Header';
-import Row from '../Tables/Row';
+import UserRow from '../Tables/UserRow';
 import Placeholder from '../../Placeholder';
 import DecisionModal from '../../LogoutModal';
 import EditUser from './EditUser';
@@ -88,7 +88,7 @@ const Users: React.FC<Users> = ({
             </Table.Row>
           ) : users.length > 0 ? (
             users.map(user => (
-              <Row
+              <UserRow
                 key={Math.random().toFixed(5)}
                 actions={actions}
                 email={user.email}
@@ -141,4 +141,5 @@ const Users: React.FC<Users> = ({
     </>
   );
 };
+
 export default Users;

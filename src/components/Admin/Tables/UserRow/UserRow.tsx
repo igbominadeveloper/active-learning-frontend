@@ -13,7 +13,7 @@ interface TableRowProps {
   user: User;
 }
 
-const Row: React.FC<TableRowProps> = ({ fullName, email, phone, actions, user }: TableRowProps) => (
+const UserRow: React.FC<TableRowProps> = ({ fullName, email, phone, actions, user }: TableRowProps) => (
   <Table.Row>
     <Table.Cell>{fullName}</Table.Cell>
     <Table.Cell>{email}</Table.Cell>
@@ -25,4 +25,4 @@ const Row: React.FC<TableRowProps> = ({ fullName, email, phone, actions, user }:
   </Table.Row>
 );
 
-export default Row;
+export default UserRow;
