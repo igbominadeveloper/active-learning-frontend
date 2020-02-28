@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Table, Tab } from 'semantic-ui-react';
+import { Table } from 'semantic-ui-react';
 
 import Header from '../Tables/Header';
 import Row from '../Tables/Row';
@@ -11,6 +11,7 @@ import { User } from '../../../pages/MyProfile';
 
 import useModal from '../../../custom-hooks/useModal';
 import { useUsersForm } from '../../../custom-hooks/useFormStates';
+import { exportTableToCSV } from '../../../utils/general';
 
 const headings: string[] = ['FullName', 'Email', 'Phone Number', 'Actions'];
 
@@ -63,7 +64,10 @@ const Users: React.FC<Users> = ({
 
   return (
     <>
-      <h3>Users</h3>
+    <div className="d-flex justify-content-center" style={{  }}>
+      <h3 className="mb-0">Users</h3>
+      <p className="cursor-pointer" onClick={() => exportTableToCSV('users.csv')} style={{ marginLeft: '20rem'  }}>Export to csv</p>
+    </div>
       <Table striped>
         <Header headings={headings} />
         <Table.Body>
