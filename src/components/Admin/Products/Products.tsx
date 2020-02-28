@@ -4,6 +4,7 @@ import { Table } from 'semantic-ui-react';
 import Header from '../Tables/Header';
 import ProductRow from '../Tables/ProductRow';
 import Placeholder from '../../Placeholder';
+import EditProduct from './EditProduct';
 // import DecisionModal from '../../LogoutModal';
 
 import { Book } from '../../../pages/Store';
@@ -11,15 +12,22 @@ import { Book } from '../../../pages/Store';
 import useModal from '../../../custom-hooks/useModal';
 import { useProductsForm } from '../../../custom-hooks/useFormStates';
 
-const headings: string[] = ['Name', 'Author', 'Language', 'Publish Date', 'Special Offer', 'Actions'];
+const headings: string[] = [
+  'Title',
+  'Author',
+  'Language',
+  'Publish Date',
+  'Special Offer',
+  'Actions',
+];
 
 interface Products {
   fetchAllProducts: Function;
   products: [Book];
   loading: boolean;
   operationSuccess: boolean;
-  //   editProduct: Function;
-  //   clearSuccess: Function;
+  editProductData: Function;
+  clearSuccess: Function;
   //   deleteUserAccount: Function;
 }
 
@@ -27,13 +35,13 @@ const Products: React.FC<Products> = ({
   fetchAllProducts,
   products,
   loading,
+  operationSuccess,
+  clearSuccess,
+  editProductData,
 }: //   editUserData,
-//   operationSuccess,
-//   clearSuccess,
 //   deleteUserAccount,
 Products) => {
-  const { openModal, toggleModal } = useModal();
-  const { openModal: openDelete, toggleModal: toggleDeleteModal } = useModal();
+  const { openEditModal, toggleEditModal, openDeleteModal, toggleDeleteModal } = useModal();
   const { product, setProduct } = useProductsForm();
 
   useEffect(() => {
@@ -41,19 +49,19 @@ Products) => {
     return () => {};
   }, [fetchAllProducts]);
 
-  const openEditModal = (productToEdit: Book): void => {
+  const openEditModalHandler = (productToEdit: Book): void => {
     setProduct(productToEdit);
-    toggleModal();
+    toggleEditModal();
   };
 
-  const openDeleteModal = (productToDelete: Book): void => {
+  const openDeleteModalHandler = (productToDelete: Book): void => {
     setProduct(productToDelete);
     toggleDeleteModal();
   };
 
   const actions = {
-    openEditModal: openEditModal,
-    openDeleteModal: openDeleteModal,
+    openEditModal: openEditModalHandler,
+    openDeleteModal: openDeleteModalHandler,
   };
 
   //   const handleDeleteUser = ():void => {
@@ -119,18 +127,18 @@ Products) => {
           )}
         </Table.Body>
       </Table>
-      {/* {openModal && (
-        <EditUser
-          open={openModal}
-          close={toggleModal}
-          user={user}
+      {openEditModal && (
+        <EditProduct
+          open={openEditModal}
+          close={toggleEditModal}
+          product={product}
           loading={loading}
-          editUserData={editUserData}
+          editProductData={editProductData}
           operationSuccess={operationSuccess}
           clearSuccess={clearSuccess}
         />
       )}
-      {openDeleteModal && (
+      {/* {openDeleteModal && (
         <DecisionModal
           open={openDelete}
           close={toggleDeleteModal}
@@ -141,7 +149,7 @@ Products) => {
           operationSuccess={operationSuccess}
           clearSuccess={clearSuccess}
         />
-      )} */}
+      )} */}{' '}
     </>
   );
 };

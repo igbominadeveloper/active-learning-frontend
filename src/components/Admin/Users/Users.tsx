@@ -34,8 +34,7 @@ const Users: React.FC<Users> = ({
   clearSuccess,
   deleteUserAccount,
 }: Users) => {
-  const { openModal, toggleModal } = useModal();
-  const { openModal: openDelete, toggleModal: toggleDeleteModal } = useModal();
+  const { openEditModal, toggleEditModal, openDeleteModal, toggleDeleteModal } = useModal();
   const { setUser, user } = useUsersForm();
 
   useEffect(() => {
@@ -43,19 +42,19 @@ const Users: React.FC<Users> = ({
     return () => {};
   }, [fetchAllUsers]);
 
-  const openEditModal = (userToEdit: User): void => {
+  const openEditModalHandler = (userToEdit: User): void => {
     setUser(userToEdit);
-    toggleModal();
+    toggleEditModal();
   };
 
-  const openDeleteModal = (userToDelete: User): void => {
+  const openDeleteModalHandler = (userToDelete: User): void => {
     setUser(userToDelete);
     toggleDeleteModal();
   } 
 
   const actions = {
-    openEditModal: openEditModal,
-    openDeleteModal: openDeleteModal,
+    openEditModal: openEditModalHandler,
+    openDeleteModal: openDeleteModalHandler,
   };
 
   const handleDeleteUser = ():void => {
@@ -115,10 +114,10 @@ const Users: React.FC<Users> = ({
           )}
         </Table.Body>
       </Table>
-      {openModal && (
+      {openEditModal && (
         <EditUser
-          open={openModal}
-          close={toggleModal}
+          open={openEditModal}
+          close={toggleEditModal}
           user={user}
           loading={loading}
           editUserData={editUserData}
@@ -128,7 +127,7 @@ const Users: React.FC<Users> = ({
       )}
       {openDeleteModal && (
         <DecisionModal
-          open={openDelete}
+          open={openDeleteModal}
           close={toggleDeleteModal}
           heading="Delete User"
           body="Are you sure you want to delete this user?"

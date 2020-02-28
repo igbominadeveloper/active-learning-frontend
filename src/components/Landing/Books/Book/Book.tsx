@@ -11,9 +11,9 @@ const Book = () => (
     <Comment className="d-flex justify-content-between align-items-center shadow">
       <div>
         <Comment.Avatar as="a" src={BookMock1} />
-        <Comment.Text className="text-bold">My new book</Comment.Text>
       </div>
       <Comment.Content className="text-left">
+        <Comment.Text className="text-bold">My new book</Comment.Text>
         <Comment.Author as="p" className="m-0">
           Matt Daniel
         </Comment.Author>

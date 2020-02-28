@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import Products from './Products';
 
-import { fetchAllProducts } from '../../../redux/actions/products';
+import { fetchAllProducts, editProductData, clearSuccess } from '../../../redux/actions/products';
 
 const mapStateToProps = (state: any) => ({
     products: state.products.data,
@@ -11,5 +11,5 @@ const mapStateToProps = (state: any) => ({
 });
 
 export default connect(mapStateToProps, {
-    fetchAllProducts
+    fetchAllProducts, editProductData, clearSuccess,
 })(Products);
