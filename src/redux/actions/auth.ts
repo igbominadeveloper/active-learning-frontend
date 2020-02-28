@@ -3,6 +3,7 @@ import * as ACTIONS from '../constants';
 import users from '../mocks/users.json';
 
 import LocalStorage from '../../utils/localstorage';
+import { toast } from 'react-toastify';
 
 interface registerObject {
     email: string;
@@ -60,6 +61,7 @@ export const loginAction = (userObject: loginObject, history: any) => async (dis
         LocalStorage.addItem('user', JSON.stringify(response));
         dispatch(authSuccess(response));
         history.push('/');
+        toast.success(`Welcome ${response.username}`)
     } catch (errors) {
         dispatch(authError(errors));
     }
@@ -72,6 +74,7 @@ export const registerAction = (userObject: registerObject, history: any) => asyn
         LocalStorage.addItem('user', JSON.stringify(response));
         dispatch(authSuccess(response));
         history.push('/');
+        toast.success(`Welcome ${response.username}`)
     } catch (errors) {
         dispatch(authError(errors));
     }

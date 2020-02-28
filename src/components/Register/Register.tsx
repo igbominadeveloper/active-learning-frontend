@@ -50,7 +50,7 @@ const RegisterForm: React.FC<IProps> = ({ registerAction, loading, error }) => {
           <Segment piled>
             <Form.Input
               fluid
-              icon="user"
+              icon="mail"
               iconPosition="left"
               placeholder="E-mail address"
               value={email}
