@@ -24,6 +24,7 @@ const usersReducer = (state: state = usersDefaultState, action: ActionTypes) => 
   switch (action.type) {
     case ACTIONS.GET_USERS_LOADING:
     case ACTIONS.EDIT_USERS_LOADING:
+    case ACTIONS.DELETE_USER_LOADING:
       return {
         ...state,
         loading: true,
@@ -36,6 +37,7 @@ const usersReducer = (state: state = usersDefaultState, action: ActionTypes) => 
           error: null,
       };
       case ACTIONS.EDIT_USERS_SUCCESS:
+      case ACTIONS.DELETE_USER_SUCCESS:
       return {
           ...state,
           data: action.payload,
@@ -45,6 +47,7 @@ const usersReducer = (state: state = usersDefaultState, action: ActionTypes) => 
       };
     case ACTIONS.GET_USERS_ERROR:
     case ACTIONS.EDIT_USERS_ERROR:
+    case ACTIONS.DELETE_USER_ERROR:
       return {
         ...state,
         error: action.payload,

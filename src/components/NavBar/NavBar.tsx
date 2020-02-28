@@ -6,6 +6,7 @@ import { User } from '../../pages/MyProfile';
 import LogoutModal from '../LogoutModal';
 
 import LocalStorage from '../../utils/localstorage';
+import { logout } from '../../utils/general';
 
 import Logo from '../../assets/images/logo.png';
 
@@ -59,7 +60,7 @@ const NavBar: React.FC = () => {
           )}
         </div>
       </Grid.Column>
-      {showModal && <LogoutModal open={showModal} close={() => setShowModal(false)} />}
+      {showModal && <LogoutModal heading="Logout" body="Are you sure you want to logout?" open={showModal} close={() => setShowModal(false)} onClick={logout} />}
     </div>
   );
 };

@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
-import { Table } from 'semantic-ui-react';
+import { Table, Tab } from 'semantic-ui-react';
 
 import Header from '../Tables/Header';
 import Row from '../Tables/Row';
 import Placeholder from '../../Placeholder';
+import DecisionModal from '../../LogoutModal';
+import EditUser from './EditUser';
 
 import { User } from '../../../pages/MyProfile';
-import EditUser from './EditUser';
 
 import useModal from '../../../custom-hooks/useModal';
 import { useUsersForm } from '../../../custom-hooks/useFormStates';
@@ -20,6 +21,7 @@ interface Users {
   operationSuccess: boolean;
   editUserData: Function;
   clearSuccess: Function;
+  deleteUserAccount: Function;
 }
 
 const Users: React.FC<Users> = ({
@@ -28,9 +30,11 @@ const Users: React.FC<Users> = ({
   loading,
   editUserData,
   operationSuccess,
-  clearSuccess
+  clearSuccess,
+  deleteUserAccount,
 }: Users) => {
   const { openModal, toggleModal } = useModal();
+  const { openModal: openDelete, toggleModal: toggleDeleteModal } = useModal();
   const { setUser, user } = useUsersForm();
 
   useEffect(() => {
@@ -43,10 +47,18 @@ const Users: React.FC<Users> = ({
     toggleModal();
   };
 
+  const openDeleteModal = (userToDelete: User): void => {
+    setUser(userToDelete);
+    toggleDeleteModal();
+  } 
+
   const actions = {
-    editAction: editUserData,
-    deleteAction: () => {},
     openEditModal: openEditModal,
+    openDeleteModal: openDeleteModal,
+  };
+
+  const handleDeleteUser = ():void => {
+    deleteUserAccount(user.id);
   };
 
   return (
@@ -56,7 +68,20 @@ const Users: React.FC<Users> = ({
         <Header headings={headings} />
         <Table.Body>
           {loading ? (
-            <Placeholder />
+            <Table.Row>
+              <Table.Cell>
+                <Placeholder />
+              </Table.Cell>
+              <Table.Cell>
+                <Placeholder />
+              </Table.Cell>
+              <Table.Cell>
+                <Placeholder />
+              </Table.Cell>
+              <Table.Cell>
+                <Placeholder />
+              </Table.Cell>
+            </Table.Row>
           ) : users.length > 0 ? (
             users.map(user => (
               <Row
@@ -69,7 +94,20 @@ const Users: React.FC<Users> = ({
               />
             ))
           ) : (
-            <span>No User found</span>
+            <Table.Row>
+              <Table.Cell>
+                <span></span>
+              </Table.Cell>
+              <Table.Cell>
+                <span></span>
+              </Table.Cell>
+              <Table.Cell>
+                <span>No User Found</span>
+              </Table.Cell>
+              <Table.Cell>
+                <span></span>
+              </Table.Cell>
+            </Table.Row>
           )}
         </Table.Body>
       </Table>
@@ -80,6 +118,18 @@ const Users: React.FC<Users> = ({
           user={user}
           loading={loading}
           editUserData={editUserData}
+          operationSuccess={operationSuccess}
+          clearSuccess={clearSuccess}
+        />
+      )}
+      {openDeleteModal && (
+        <DecisionModal
+          open={openDelete}
+          close={toggleDeleteModal}
+          heading="Delete User"
+          body="Are you sure you want to delete this user?"
+          onClick={handleDeleteUser}
+          loading={loading}
           operationSuccess={operationSuccess}
           clearSuccess={clearSuccess}
         />
