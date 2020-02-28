@@ -1,0 +1,62 @@
+[
+  {
+    "id": "_975895",
+    "name": "The Mamba Mentality",
+    "publishedAt": "21-02-2020",
+    "author": "Favour Afolayan",
+    "description": "lorem ipsum dolor etal",
+    "specialOffer": "true",
+    "cover": "picture.png",
+    "language": "English"
+  },
+  {
+    "id": "_975896",
+    "name": "The Mamba Mentality",
+    "publishedAt": "21-02-2020",
+    "author": "John Doe",
+    "description": "lorem ipsum dolor etal",
+    "specialOffer": "false",
+    "cover": "picture.png",
+    "language": "Romanian"
+  },
+  {
+    "id": "_975897",
+    "name": "The Mamba Mentality",
+    "publishedAt": "21-02-2020",
+    "author": "Jane Doe",
+    "description": "lorem ipsum dolor etal",
+    "specialOffer": "false",
+    "cover": "picture.png",
+    "language": "English"
+  },
+  {
+    "id": "_975899",
+    "name": "The Mamba Mentality",
+    "publishedAt": "21-02-2020",
+    "author": "Favour Afolayan",
+    "description": "lorem ipsum dolor etal",
+    "specialOffer": "true",
+    "cover": "picture.png",
+    "language": "Romanian"
+  },
+  {
+    "id": "_975893",
+    "name": "The Mamba Mentality",
+    "publishedAt": "21-02-2020",
+    "author": "John Doe",
+    "description": "lorem ipsum dolor etal",
+    "specialOffer": "false",
+    "cover": "picture.png",
+    "language": "English"
+  },
+  {
+    "id": "_975892",
+    "name": "The Mamba Mentality",
+    "publishedAt": "21-02-2020",
+    "author": "Jane Doe",
+    "description": "lorem ipsum dolor etal",
+    "specialOffer": "false",
+    "cover": "picture.png",
+    "language": "Romanian"
+  }
+]
