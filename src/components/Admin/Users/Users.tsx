@@ -4,7 +4,7 @@ import { Table } from 'semantic-ui-react';
 import Header from '../Tables/Header';
 import UserRow from '../Tables/UserRow';
 import Placeholder from '../../Placeholder';
-import DecisionModal from '../../LogoutModal';
+import DecisionModal from '../../DecisionModal';
 import EditUser from './EditUser';
 
 import { User } from '../../../pages/MyProfile';

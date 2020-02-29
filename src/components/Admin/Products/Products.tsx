@@ -5,7 +5,7 @@ import Header from '../Tables/Header';
 import ProductRow from '../Tables/ProductRow';
 import Placeholder from '../../Placeholder';
 import EditProduct from './EditProduct';
-// import DecisionModal from '../../LogoutModal';
+import DecisionModal from '../../DecisionModal';
 
 import { Book } from '../../../pages/Store';
 
@@ -28,7 +28,7 @@ interface Products {
   operationSuccess: boolean;
   editProductData: Function;
   clearSuccess: Function;
-  //   deleteUserAccount: Function;
+  deleteAProduct: Function;
 }
 
 const Products: React.FC<Products> = ({
@@ -38,8 +38,8 @@ const Products: React.FC<Products> = ({
   operationSuccess,
   clearSuccess,
   editProductData,
-}: //   editUserData,
-//   deleteUserAccount,
+  deleteAProduct,
+}:
 Products) => {
   const { openEditModal, toggleEditModal, openDeleteModal, toggleDeleteModal } = useModal();
   const { product, setProduct } = useProductsForm();
@@ -64,9 +64,9 @@ Products) => {
     openDeleteModal: openDeleteModalHandler,
   };
 
-  //   const handleDeleteUser = ():void => {
-  //     deleteUserAccount(user.id);
-  //   };
+    const handleDeleteProduct = ():void => {
+      deleteAProduct(product.id);
+    };
 
   return (
     <>
@@ -138,18 +138,18 @@ Products) => {
           clearSuccess={clearSuccess}
         />
       )}
-      {/* {openDeleteModal && (
+      {openDeleteModal && (
         <DecisionModal
-          open={openDelete}
+          open={openDeleteModal}
           close={toggleDeleteModal}
-          heading="Delete User"
-          body="Are you sure you want to delete this user?"
-          onClick={handleDeleteUser}
+          heading="Delete Product"
+          body="Are you sure you want to delete this product?"
+          onClick={handleDeleteProduct}
           loading={loading}
           operationSuccess={operationSuccess}
           clearSuccess={clearSuccess}
         />
-      )} */}{' '}
+      )}
     </>
   );
 };
