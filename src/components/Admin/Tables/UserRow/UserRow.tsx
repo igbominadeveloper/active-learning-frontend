@@ -19,8 +19,8 @@ const UserRow: React.FC<TableRowProps> = ({ fullName, email, phone, actions, use
     <Table.Cell>{email}</Table.Cell>
     <Table.Cell>{phone}</Table.Cell>
     <Table.Cell className="actions">
-      <Icon name="edit outline" color="teal" className="cursor-pointer" onClick={() => actions.openEditModal(user)} />
-      <Icon name="delete" color="red"  className="cursor-pointer" onClick={() => actions.openDeleteModal(user)}/>
+      <Icon name="edit outline" className="cursor-pointer" onClick={() => actions.openEditModal(user)} />
+      <Icon name="trash" color="red" className="cursor-pointer" onClick={() => actions.openDeleteModal(user)}/>
     </Table.Cell>
   </Table.Row>
 );

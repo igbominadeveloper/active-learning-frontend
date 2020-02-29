@@ -41,20 +41,19 @@ const UserRow: React.FC<TableRowProps> = ({
     <Table.Cell>{publishedAt}</Table.Cell>
     <Table.Cell>
       {specialOffer ? (
-        <Icon name="thumbs up outline" color="teal" />
+        <Icon name="check circle" color="teal" />
       ) : (
-        <Icon name="thumbs down outline" />
+        <Icon name="delete" />
       )}
     </Table.Cell>
     <Table.Cell className="actions">
       <Icon
         name="edit outline"
-        color="teal"
         className="cursor-pointer"
         onClick={() => actions.openEditModal(product)}
       />
       <Icon
-        name="delete"
+        name="trash"
         color="red"
         className="cursor-pointer"
         onClick={() => actions.openDeleteModal(product)}

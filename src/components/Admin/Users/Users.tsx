@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Table } from 'semantic-ui-react';
+import { Table, Button, Icon } from 'semantic-ui-react';
 
 import Header from '../Tables/Header';
 import UserRow from '../Tables/UserRow';
@@ -50,23 +50,33 @@ const Users: React.FC<Users> = ({
   const openDeleteModalHandler = (userToDelete: User): void => {
     setUser(userToDelete);
     toggleDeleteModal();
-  } 
+  };
 
   const actions = {
     openEditModal: openEditModalHandler,
     openDeleteModal: openDeleteModalHandler,
   };
 
-  const handleDeleteUser = ():void => {
+  const handleDeleteUser = (): void => {
     deleteUserAccount(user.id);
   };
 
   return (
     <>
-    <div className="d-flex justify-content-center" style={{  }}>
-      <h3 className="mb-0">Users</h3>
-      <p className="cursor-pointer" onClick={() => exportTableToCSV('users.csv')} style={{ marginLeft: '20rem'  }}>Export to csv</p>
-    </div>
+      <div className="d-flex justify-content-center align-items-center">
+        <div className="d-flex justify-content-end w-50">
+          <h3 className="mb-0">Users</h3>
+        </div>
+        <div className="d-flex justify-content-end w-50">
+          <Button
+            onClick={() => exportTableToCSV('users.csv')}
+            color="teal"
+          >
+            <Icon name="file excel outline" />
+            Export to csv
+          </Button>
+        </div>
+      </div>
       <Table striped>
         <Header headings={headings} />
         <Table.Body>

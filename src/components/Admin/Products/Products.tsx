@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { Table } from 'semantic-ui-react';
+import React, { useEffect, useState } from 'react';
+import { Table, Button, Icon } from 'semantic-ui-react';
 
 import Header from '../Tables/Header';
 import ProductRow from '../Tables/ProductRow';
@@ -29,6 +29,7 @@ interface Products {
   editProductData: Function;
   clearSuccess: Function;
   deleteAProduct: Function;
+  addANewProduct: Function;
 }
 
 const Products: React.FC<Products> = ({
@@ -39,10 +40,11 @@ const Products: React.FC<Products> = ({
   clearSuccess,
   editProductData,
   deleteAProduct,
-}:
-Products) => {
+  addANewProduct,
+}: Products) => {
   const { openEditModal, toggleEditModal, openDeleteModal, toggleDeleteModal } = useModal();
   const { product, setProduct } = useProductsForm();
+  const [mode, setMode] = useState('');
 
   useEffect(() => {
     fetchAllProducts();
@@ -50,7 +52,13 @@ Products) => {
   }, [fetchAllProducts]);
 
   const openEditModalHandler = (productToEdit: Book): void => {
+    setMode('EDIT');
     setProduct(productToEdit);
+    toggleEditModal();
+  };
+
+  const openAddModalHandler = (): void => {
+    setMode('ADD');
     toggleEditModal();
   };
 
@@ -64,13 +72,23 @@ Products) => {
     openDeleteModal: openDeleteModalHandler,
   };
 
-    const handleDeleteProduct = ():void => {
-      deleteAProduct(product.id);
-    };
+  const handleDeleteProduct = (): void => {
+    deleteAProduct(product.id);
+  };
 
   return (
     <>
-      <h3>Products</h3>
+    <div className="d-flex justify-content-between align-items-center">
+      <div className="d-flex justify-content-end w-50">
+        <h3 className="mb-0">Products</h3>
+      </div>
+      <div className="d-flex justify-content-end w-50">
+        <Button onClick={openAddModalHandler} color="teal">
+          <Icon name="add circle" />
+          Add New
+        </Button>
+      </div>
+    </div>
       <Table striped>
         <Header headings={headings} />
         <Table.Body>
@@ -136,6 +154,8 @@ Products) => {
           editProductData={editProductData}
           operationSuccess={operationSuccess}
           clearSuccess={clearSuccess}
+          mode={mode}
+          addANewProduct={addANewProduct}
         />
       )}
       {openDeleteModal && (
