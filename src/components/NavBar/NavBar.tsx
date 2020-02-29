@@ -3,7 +3,7 @@ import { Grid, Image, Dropdown } from 'semantic-ui-react';
 import { Link, useHistory } from 'react-router-dom';
 
 import { User } from '../../pages/MyProfile';
-import LogoutModal from '../LogoutModal';
+import LogoutModal from '../DecisionModal';
 
 import LocalStorage from '../../utils/localstorage';
 import { logout } from '../../utils/general';

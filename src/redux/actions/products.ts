@@ -71,37 +71,37 @@ export const editProductData = (id: string, productBody: object) => async (dispa
     }
 };
 
-// const deleteUserSuccess = (payload: any) => ({
-//     type: ACTIONS.DELETE_USER_SUCCESS,
-//     payload,
-// });
+const deleteProductSuccess = (payload: any) => ({
+    type: ACTIONS.DELETE_PRODUCT_SUCCESS,
+    payload,
+});
 
-// const deleteUserLoading = () => ({
-//     type: ACTIONS.DELETE_USER_LOADING,
-// });
+const deleteProductLoading = () => ({
+    type: ACTIONS.DELETE_PRODUCT_LOADING,
+});
 
-// const deleteUserError = (payload: any) => ({
-//     type: ACTIONS.DELETE_USER_ERROR,
-//     payload,
-// });
+const deleteProductError = (payload: any) => ({
+    type: ACTIONS.DELETE_PRODUCT_ERROR,
+    payload,
+});
 
 
-// const deleteUser = (id: string): Promise<any> => new Promise((resolve, reject) =>
-//     setTimeout(() => {
-//         if(users) {
-//             const indexToDelete = users.findIndex(user => user.id === id);
-//             users.splice(indexToDelete, 1);
-//             return resolve(users)
-//         }
-//         return reject('An Error occured');
-//     }, 2000));
+const deleteProduct = (id: string): Promise<any> => new Promise((resolve, reject) =>
+    setTimeout(() => {
+        if(products) {
+            const indexToDelete = products.findIndex(product => product.id === id);
+            products.splice(indexToDelete, 1);
+            return resolve(products)
+        }
+        return reject('An Error occured');
+    }, 2000));
 
-// export const deleteUserAccount = (id: string) => async (dispatch: Function) => {
-//     try {
-//         dispatch(deleteUserLoading());
-//         const response = await deleteUser(id);
-//         dispatch(deleteUserSuccess(response));
-//     } catch (errors) {
-//         dispatch(deleteUserError(errors));
-//     }
-// };
+export const deleteAProduct = (id: string) => async (dispatch: Function) => {
+    try {
+        dispatch(deleteProductLoading());
+        const response = await deleteProduct(id);
+        dispatch(deleteProductSuccess(response));
+    } catch (errors) {
+        dispatch(deleteProductError(errors));
+    }
+};
