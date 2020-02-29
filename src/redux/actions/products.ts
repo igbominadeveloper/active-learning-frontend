@@ -32,44 +32,44 @@ export const fetchAllProducts = () => async (dispatch: Function) => {
     }
 };
 
-// const editUsersSuccess = (payload: any) => ({
-//     type: ACTIONS.EDIT_USERS_SUCCESS,
-//     payload,
-// });
+const editProductSuccess = (payload: any) => ({
+    type: ACTIONS.EDIT_PRODUCT_SUCCESS,
+    payload,
+});
 
-// const editUsersLoading = () => ({
-//     type: ACTIONS.EDIT_USERS_LOADING,
-// });
+const editProductLoading = () => ({
+    type: ACTIONS.EDIT_PRODUCT_LOADING,
+});
 
-// const editUsersError = (payload: any) => ({
-//     type: ACTIONS.EDIT_USERS_ERROR,
-//     payload,
-// });
+const editProductError = (payload: any) => ({
+    type: ACTIONS.EDIT_PRODUCT_ERROR,
+    payload,
+});
 
-// export const clearSuccess = () => ({
-//     type: ACTIONS.CLEAR_SUCCESS,
-// });
+export const clearSuccess = () => ({
+    type: ACTIONS.CLEAR_SUCCESS,
+});
 
-// const editUser = (id: string, userBody: object): Promise<any> => new Promise((resolve, reject) =>
-//     setTimeout(() => {
-//         if(users) {
-//             const indexToUpdate = users.findIndex(user => user.id === id);
-//             const newObject = {...users[indexToUpdate], ...userBody};
-//             users[indexToUpdate] = newObject;
-//             return resolve(users)
-//         }
-//         return reject('An Error occured');
-//     }, 2000));
+const editProduct = (id: string, productBody: object): Promise<any> => new Promise((resolve, reject) =>
+    setTimeout(() => {
+        if(products) {
+            const indexToUpdate = products.findIndex(product => product.id === id);
+            const newObject = {...products[indexToUpdate], ...productBody};
+            products[indexToUpdate] = newObject;
+            return resolve(products)
+        }
+        return reject('An Error occured');
+    }, 2000));
 
-// export const editUserData = (id: string, userBody: object) => async (dispatch: Function) => {
-//     try {
-//         dispatch(editUsersLoading());
-//         const response = await editUser(id, userBody);
-//         dispatch(editUsersSuccess(response));
-//     } catch (errors) {
-//         dispatch(editUsersError(errors));
-//     }
-// };
+export const editProductData = (id: string, productBody: object) => async (dispatch: Function) => {
+    try {
+        dispatch(editProductLoading());
+        const response = await editProduct(id, productBody);
+        dispatch(editProductSuccess(response));
+    } catch (errors) {
+        dispatch(editProductError(errors));
+    }
+};
 
 // const deleteUserSuccess = (payload: any) => ({
 //     type: ACTIONS.DELETE_USER_SUCCESS,

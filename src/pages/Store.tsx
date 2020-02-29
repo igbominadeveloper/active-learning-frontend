@@ -8,7 +8,7 @@ export interface Book {
     publishedAt: string;
     author: string;
     description: string;
-    specialOffer: string;
+    specialOffer: boolean;
     cover: string;
     language: string;
 }

@@ -1,0 +1,149 @@
+import React, { useEffect, useState } from 'react';
+import { Modal, Button, Form, Segment, Select } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
+import { toast } from 'react-toastify';
+
+import { Book } from '../../../../pages/Store';
+
+interface EditProductProps {
+  open: boolean;
+  close: any;
+  editProductData: Function;
+  product: Book;
+  productId: string;
+  loading: boolean;
+  operationSuccess: boolean;
+  clearSuccess: Function;
+}
+
+const EditProduct: React.FC<any> = (props: EditProductProps) => {
+  const [name, setName] = useState(props.product.name);
+  const [author, setAuthor] = useState(props.product.author);
+  const [publishedAt, setPublishedAt] = useState(props.product.publishedAt);
+  const [specialOffer, setSpecialOffer] = useState(props.product.specialOffer);
+  const [cover, setCover] = useState(props.product.cover);
+  const [language, setLanguage] = useState(props.product.language);
+  const [formHasErrors, setFormHasErrors] = useState(false);
+
+  useEffect(() => {
+    const fields: any[] = [name, author, publishedAt, language];
+    const emptyField: boolean = fields.some(field => field.length < 1);
+    if (emptyField) return setFormHasErrors(true);
+    return setFormHasErrors(false);
+  }, [name, author, publishedAt, language]);
+
+  useEffect(() => {
+    if (props.operationSuccess) {
+      toast.success('Product Updated successfully');
+      props.close();
+      props.clearSuccess();
+    }
+  }, [props]);
+
+  const submitForm = (): void => {
+    props.editProductData(props.product.id, {
+      name,
+      author,
+      publishedAt,
+      specialOffer,
+      language,
+      cover,
+    });
+  };
+
+  const handleSelectChange = (event: any, data: any) => setLanguage(data.value);
+
+  const handleCheckBoxChange = (event: any, data: any) => setSpecialOffer(data.checked);
+
+  return (
+    <Modal size="small" open={props.open} closeOnDocumentClick closeOnDimmerClick>
+      <Modal.Header>Edit Product</Modal.Header>
+      <Modal.Content>
+        <Form size="large">
+          <Segment piled>
+            <Form.Input
+              fluid
+              icon="at"
+              iconPosition="left"
+              placeholder="Name"
+              value={name}
+              type="name"
+              onChange={event => setName(event.target.value)}
+              required
+            />
+            <Form.Input
+              fluid
+              icon="user"
+              iconPosition="left"
+              placeholder="Author"
+              type="text"
+              value={author}
+              onChange={event => setAuthor(event.target.value)}
+              required
+            />
+
+            <Form.Group inline widths="equal">
+              <Form.Input
+                fluid
+                icon="calendar times outline"
+                iconPosition="left"
+                placeholder="publishedAt"
+                type="date"
+                value={publishedAt}
+                onChange={event => setPublishedAt(event.target.value)}
+                required
+              />
+              <Form.Input
+                fluid
+                icon="picture"
+                iconPosition="left"
+                placeholder="Cover Image url"
+                type="text"
+                value={cover}
+                onChange={event => setCover(event.target.value)}
+                required
+              />
+            </Form.Group>
+            <Form.Group inline widths="equal">
+              <Form.Checkbox
+                label="Special Offer"
+                toggle
+                checked={specialOffer}
+                onChange={handleCheckBoxChange}
+                required
+              />
+              <Select
+                fluid
+                placeholder="Language"
+                type="text"
+                value={language}
+                options={[
+                  { key: 'eng', value: 'English', text: 'English' },
+                  { key: 'rom', value: 'Romanian', text: 'Romanian' },
+                ]}
+                onChange={handleSelectChange}
+                required
+              />
+            </Form.Group>
+          </Segment>
+        </Form>
+      </Modal.Content>
+      <Modal.Actions>
+        <Button onClick={props.close}>Cancel</Button>
+        <Button color="teal" disabled={formHasErrors} loading={props.loading} onClick={submitForm}>
+          Save
+        </Button>
+      </Modal.Actions>
+    </Modal>
+  );
+};
+
+EditProduct.propTypes = {
+  open: PropTypes.bool.isRequired,
+  close: PropTypes.func.isRequired,
+  product: PropTypes.object.isRequired,
+  loading: PropTypes.bool.isRequired,
+  operationSuccess: PropTypes.bool.isRequired,
+};
+
+export default EditProduct;

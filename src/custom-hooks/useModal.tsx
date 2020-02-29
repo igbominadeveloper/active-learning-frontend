@@ -1,18 +1,24 @@
 import { useState } from 'react';
 
 interface useModalProps {
-    openModal: boolean;
-    toggleModal: Function;
+    openEditModal: boolean;
+    openDeleteModal: boolean;
+    toggleEditModal : Function;
+    toggleDeleteModal : Function;
 }
 
 const useModal = (): useModalProps => {
-    const [openModal, setOpenModal] = useState(false);
+    const [openEditModal, setOpenEditModal] = useState(false);
+    const [openDeleteModal, setOpenDeleteModal] = useState(false);
     
-    const toggleModal = ():void => setOpenModal(!openModal);
+    const toggleEditModal = ():void => setOpenEditModal(!openEditModal);
+    const toggleDeleteModal = ():void => setOpenDeleteModal(!openDeleteModal);
 
     return {
-        openModal: openModal,
-        toggleModal: toggleModal
+        openEditModal: openEditModal,
+        openDeleteModal: openDeleteModal, 
+        toggleEditModal: toggleEditModal,
+        toggleDeleteModal: toggleDeleteModal 
     }
 }
 

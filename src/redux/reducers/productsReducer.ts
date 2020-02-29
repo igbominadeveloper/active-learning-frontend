@@ -23,7 +23,7 @@ const productsDefaultState: state = {
 const productsReducer = (state: state = productsDefaultState, action: ActionTypes) => {
   switch (action.type) {
     case ACTIONS.GET_PRODUCTS_LOADING:
-    case ACTIONS.EDIT_PRODUCTS_LOADING:
+    case ACTIONS.EDIT_PRODUCT_LOADING:
     case ACTIONS.DELETE_PRODUCT_LOADING:
       return {
         ...state,
@@ -36,7 +36,7 @@ const productsReducer = (state: state = productsDefaultState, action: ActionType
           loading: false,
           error: null,
       };
-      case ACTIONS.EDIT_PRODUCTS_SUCCESS:
+      case ACTIONS.EDIT_PRODUCT_SUCCESS:
       case ACTIONS.DELETE_PRODUCT_SUCCESS:
       return {
           ...state,
@@ -46,7 +46,7 @@ const productsReducer = (state: state = productsDefaultState, action: ActionType
           operationSuccess: true,
       };
     case ACTIONS.GET_PRODUCTS_ERROR:
-    case ACTIONS.EDIT_PRODUCTS_ERROR:
+    case ACTIONS.EDIT_PRODUCT_ERROR:
     case ACTIONS.DELETE_PRODUCT_ERROR:
       return {
         ...state,

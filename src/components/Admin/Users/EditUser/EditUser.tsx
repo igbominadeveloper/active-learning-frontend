@@ -33,7 +33,7 @@ const EditUser: React.FC<any> = (props: EditUserProps) => {
 
   useEffect(() => {
     if(props.operationSuccess){
-      toast.success('Updated successfully');
+      toast.success('User Updated successfully');
       props.close();
       props.clearSuccess();
     }
@@ -76,7 +76,7 @@ const EditUser: React.FC<any> = (props: EditUserProps) => {
                 icon="mobile"
                 iconPosition="left"
                 placeholder="Phone Number"
-                type="text"
+                type="number"
                 value={phone}
                 onChange={event => setPhone(event.target.value)}
                 required
