@@ -8,6 +8,11 @@ interface productsForm {
   setProduct: Function;
 }
 
+interface ordersForm {
+  order: any;
+  setOrder: Function;
+}
+
 
 export const useUsersForm = (): usersForm => {
   const [user, setUser] = useState({});
@@ -22,5 +27,13 @@ export const useProductsForm = (): productsForm => {
   return {
     product: product,
     setProduct: setProduct,
+  };
+};
+
+export const useOrdersForm = (): ordersForm => {
+  const [order, setOrder] = useState({});
+  return {
+    order: order,
+    setOrder: setOrder,
   };
 };

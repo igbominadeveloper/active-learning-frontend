@@ -17,7 +17,7 @@ const Admin: React.FC = () => {
           <Link to={`${match.url}`}>Users Management</Link>
         </Card.Content>
         <Card.Content>
-          <Icon name="product hunt" />
+          <Icon name="tag" />
           <Link to={`${match.url}/products`}>Products Management</Link>
         </Card.Content>
         <Card.Content>
