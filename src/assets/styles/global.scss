@@ -50,6 +50,9 @@ body {
 .justify-content-between {
   justify-content: space-between !important;
 }
+.justify-content-around {
+  justify-content: space-around !important;
+}
 .align-items-center {
   align-items: center !important;
 }
@@ -170,4 +173,8 @@ body {
 
 .w-100 {
   width: 100%;
+}
+
+.w-50 {
+  width: 50%;
 }

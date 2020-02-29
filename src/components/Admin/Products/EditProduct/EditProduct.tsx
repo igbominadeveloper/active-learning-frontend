@@ -5,6 +5,10 @@ import { toast } from 'react-toastify';
 
 import { Book } from '../../../../pages/Store';
 
+enum mode {
+  EDIT = 'EDIT',
+  ADD = 'ADD',
+}
 interface EditProductProps {
   open: boolean;
   close: any;
@@ -14,15 +18,21 @@ interface EditProductProps {
   loading: boolean;
   operationSuccess: boolean;
   clearSuccess: Function;
+  mode: mode;
+  addANewProduct: Function;
 }
 
 const EditProduct: React.FC<any> = (props: EditProductProps) => {
-  const [name, setName] = useState(props.product.name);
-  const [author, setAuthor] = useState(props.product.author);
-  const [publishedAt, setPublishedAt] = useState(props.product.publishedAt);
-  const [specialOffer, setSpecialOffer] = useState(props.product.specialOffer);
-  const [cover, setCover] = useState(props.product.cover);
-  const [language, setLanguage] = useState(props.product.language);
+  const [name, setName] = useState(props.mode === 'EDIT' ? props.product.name : '');
+  const [author, setAuthor] = useState(props.mode === 'EDIT' ? props.product.author : '');
+  const [publishedAt, setPublishedAt] = useState(
+    props.mode === 'EDIT' ? props.product.publishedAt : ''
+  );
+  const [specialOffer, setSpecialOffer] = useState(
+    props.mode === 'EDIT' ? props.product.specialOffer : false
+  );
+  const [cover, setCover] = useState(props.mode === 'EDIT' ? props.product.cover : '');
+  const [language, setLanguage] = useState(props.mode === 'EDIT' ? props.product.language : '');
   const [formHasErrors, setFormHasErrors] = useState(false);
 
   useEffect(() => {
@@ -34,21 +44,31 @@ const EditProduct: React.FC<any> = (props: EditProductProps) => {
 
   useEffect(() => {
     if (props.operationSuccess) {
-      toast.success('Product Updated successfully');
+      const message: string = props.mode === 'EDIT' ? 'Product Updated successfully' : 'Product Added successfully';
+      toast.success(message);
       props.close();
       props.clearSuccess();
     }
   }, [props]);
 
   const submitForm = (): void => {
-    props.editProductData(props.product.id, {
-      name,
-      author,
-      publishedAt,
-      specialOffer,
-      language,
-      cover,
-    });
+    props.mode === 'EDIT'
+      ? props.editProductData(props.product.id, {
+          name,
+          author,
+          publishedAt,
+          specialOffer,
+          language,
+          cover,
+        })
+      : props.addANewProduct({
+          name,
+          author,
+          publishedAt,
+          specialOffer,
+          language,
+          cover,
+        });
   };
 
   const handleSelectChange = (event: any, data: any) => setLanguage(data.value);
@@ -57,7 +77,7 @@ const EditProduct: React.FC<any> = (props: EditProductProps) => {
 
   return (
     <Modal size="small" open={props.open} closeOnDocumentClick closeOnDimmerClick>
-      <Modal.Header>Edit Product</Modal.Header>
+      <Modal.Header>{props.mode === 'EDIT' ? 'Edit Product' : 'Add Product'}</Modal.Header>
       <Modal.Content>
         <Form size="large">
           <Segment piled>
@@ -93,25 +113,6 @@ const EditProduct: React.FC<any> = (props: EditProductProps) => {
                 onChange={event => setPublishedAt(event.target.value)}
                 required
               />
-              <Form.Input
-                fluid
-                icon="picture"
-                iconPosition="left"
-                placeholder="Cover Image url"
-                type="text"
-                value={cover}
-                onChange={event => setCover(event.target.value)}
-                required
-              />
-            </Form.Group>
-            <Form.Group inline widths="equal">
-              <Form.Checkbox
-                label="Special Offer"
-                toggle
-                checked={specialOffer}
-                onChange={handleCheckBoxChange}
-                required
-              />
               <Select
                 fluid
                 placeholder="Language"
@@ -125,6 +126,25 @@ const EditProduct: React.FC<any> = (props: EditProductProps) => {
                 required
               />
             </Form.Group>
+
+            <Form.Input
+              fluid
+              icon="picture"
+              iconPosition="left"
+              placeholder="Cover Image url (https://cloudinary.com/my-photo.png)"
+              type="text"
+              value={cover}
+              onChange={event => setCover(event.target.value)}
+              required
+            />
+
+            <Form.Checkbox
+              label="Special Offer"
+              toggle
+              checked={specialOffer}
+              onChange={handleCheckBoxChange}
+              required
+            />
           </Segment>
         </Form>
       </Modal.Content>

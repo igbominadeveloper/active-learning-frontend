@@ -1,6 +1,7 @@
 import * as ACTIONS from '../constants';
 
 import products from '../mocks/products.json';
+import { Book } from '../../pages/Store';
 
 const getProductsSuccess = (payload: any) => ({
     type: ACTIONS.GET_PRODUCTS_SUCCESS,
@@ -103,5 +104,39 @@ export const deleteAProduct = (id: string) => async (dispatch: Function) => {
         dispatch(deleteProductSuccess(response));
     } catch (errors) {
         dispatch(deleteProductError(errors));
+    }
+};
+
+const addNewProductSuccess = (payload: any) => ({
+    type: ACTIONS.ADD_NEW_PRODUCT_SUCCESS,
+    payload,
+});
+
+const addNewProductLoading = () => ({
+    type: ACTIONS.ADD_NEW_PRODUCT_LOADING,
+});
+
+const addNewProductError = (payload: any) => ({
+    type: ACTIONS.ADD_NEW_PRODUCT_ERROR,
+    payload,
+});
+
+
+const addNewProduct = (newProduct: Book): Promise<any> => new Promise((resolve, reject) =>
+    setTimeout(() => {
+        if(newProduct) {
+            products.push(newProduct);
+            return resolve(products)
+        }
+        return reject('An Error occured');
+    }, 2000));
+
+export const addANewProduct = (newProduct: Book) => async (dispatch: Function) => {
+    try {
+        dispatch(addNewProductLoading());
+        const response = await addNewProduct(newProduct);
+        dispatch(addNewProductSuccess(response));
+    } catch (errors) {
+        dispatch(addNewProductError(errors));
     }
 };

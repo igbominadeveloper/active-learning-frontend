@@ -18,7 +18,7 @@ const useModal = (): useModalProps => {
         openEditModal: openEditModal,
         openDeleteModal: openDeleteModal, 
         toggleEditModal: toggleEditModal,
-        toggleDeleteModal: toggleDeleteModal 
+        toggleDeleteModal: toggleDeleteModal,
     }
 }
 
