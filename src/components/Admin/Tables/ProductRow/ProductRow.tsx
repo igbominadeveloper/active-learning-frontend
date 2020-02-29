@@ -3,8 +3,7 @@ import { Table, Icon, Image } from 'semantic-ui-react';
 
 import { Book } from '../../../../pages/Store';
 
-
-import './Row.scss';
+import '../Row.scss';
 
 const defaultCover = 'https://react.semantic-ui.com/images/wireframe/square-image.png';
 

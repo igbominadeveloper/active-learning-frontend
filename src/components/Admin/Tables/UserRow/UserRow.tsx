@@ -3,7 +3,7 @@ import { Table, Icon } from 'semantic-ui-react';
 
 import { User } from '../../../../pages/MyProfile';
 
-import './Row.scss';
+import '../Row.scss';
 
 interface TableRowProps {
   fullName: string;
