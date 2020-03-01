@@ -74,9 +74,15 @@ const EditOrder: React.FC<any> = (props: EditOrderProps) => {
       <Modal.Content>
         <Form size="large">
           <Segment piled>
-            <Form.Group inline widths="equal">
-              <div className="d-flex flex-column w-50">
+            <div className="d-flex justify-content-between mb-1">
+              <div className="d-flex justify-content-start w-50">
                 <p className="text-bold">Product</p>
+              </div>
+              <div className="d-flex justify-content-start w-50">
+                <p className="text-bold">Customer</p>
+              </div>
+            </div>
+            <Form.Group inline widths="equal">
                 <Select
                   fluid
                   placeholder="Product"
@@ -86,10 +92,7 @@ const EditOrder: React.FC<any> = (props: EditOrderProps) => {
                   onChange={handleProductSelectChange}
                   required
                 />
-              </div>
 
-              <div className="d-flex flex-column w-50">
-                <p className="text-bold">Customer</p>
                 <Select
                   fluid
                   placeholder="Customer"
@@ -99,20 +102,27 @@ const EditOrder: React.FC<any> = (props: EditOrderProps) => {
                   onChange={handleUserSelectChange}
                   required
                 />
-              </div>
+
             </Form.Group>
+            {props.mode === 'EDIT' && (
+              <p className="text-bold">
+                <label>Order Date</label>
+              </p>
+            )}
 
             <Form.Group inline widths="equal">
-              <Form.Input
-                fluid
-                icon="calendar times outline"
-                iconPosition="left"
-                placeholder="datePlaced"
-                type="date"
-                value={datePlaced}
-                onChange={event => setDatePlaced(event.target.value)}
-                required
-              />
+              {props.mode === 'EDIT' && (
+                <Form.Input
+                  fluid
+                  icon="calendar times outline"
+                  iconPosition="left"
+                  placeholder="datePlaced"
+                  type="date"
+                  value={datePlaced}
+                  onChange={event => setDatePlaced(event.target.value)}
+                  required
+                />
+              )}
               <Form.Input
                 fluid
                 icon="dollar"

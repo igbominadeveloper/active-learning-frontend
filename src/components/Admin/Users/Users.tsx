@@ -145,6 +145,7 @@ const Users: React.FC<Users> = ({
           loading={loading}
           operationSuccess={operationSuccess}
           clearSuccess={clearSuccess}
+          successMessage="User deleted successfully"
         />
       )}
     </>

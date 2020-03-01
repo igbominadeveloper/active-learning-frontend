@@ -4,6 +4,7 @@ import users from '../mocks/users.json';
 
 import LocalStorage from '../../utils/localstorage';
 import { toast } from 'react-toastify';
+import { generateId } from '../../utils/general';
 
 interface registerObject {
     email: string;
@@ -34,7 +35,7 @@ const registerNewUser = (userDetails: registerObject): Promise<any> => new Promi
         const existingUser = users.find(user => user.email === userDetails.email || user.phone === userDetails.phone);
 
         if (existingUser) return reject('Your email and phone number is in use, please choose another');
-        const user: registerObject = { id: `-${Math.random().toFixed(5)}`, ...userDetails };
+        const user: registerObject = { id: generateId(), ...userDetails };
         // writeFileSync(filename, JSON.stringify(users));
         return resolve(user);
     }, 2000);

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Table } from 'semantic-ui-react';
+import { Table, Button, Icon } from 'semantic-ui-react';
 
 import Header from '../Tables/Header';
 import Placeholder from '../../Placeholder';
@@ -8,10 +8,10 @@ import EditOrder from './EditOrder';
 import DecisionModal from '../../DecisionModal';
 
 import { Order, Book } from '../../../pages/Store';
+import { User } from '../../../pages/MyProfile';
 
 import useModal from '../../../custom-hooks/useModal';
 import { useOrdersForm } from '../../../custom-hooks/useFormStates';
-import { User } from '../../../pages/MyProfile';
 
 const headings: string[] = [
   'Order Id',
@@ -33,7 +33,7 @@ interface Orders {
   editOrderData: Function;
   clearSuccess: Function;
   addANewOrder: Function;
-//   deleteAProduct: Function;
+  deleteAnOrder: Function;
   fetchAllProducts: Function;
   fetchAllUsers: Function;
 }
@@ -45,7 +45,7 @@ const Orders: React.FC<Orders> = ({
   operationSuccess,
   clearSuccess,
   editOrderData,
-  // deleteAProduct,
+  deleteAnOrder,
   addANewOrder,
   fetchAllProducts,
   fetchAllUsers,
@@ -82,14 +82,22 @@ const Orders: React.FC<Orders> = ({
     openDeleteModal: openDeleteModalHandler,
   };
 
-  // const handleDeleteProduct = (): void => {
-  //   deleteAProduct(product.id);
-  // };
+  const handleDeleteOrder = (): void => {
+    deleteAnOrder(order.id);
+  };
 
   return (
     <>
-    <div className="d-flex justify-content-center align-items-center">
+    <div className="d-flex justify-content-between align-items-center">
+      <div className="d-flex justify-content-end w-50">
         <h3 className="mb-0">Orders</h3>
+      </div>
+      <div className="d-flex justify-content-end w-50">
+        <Button onClick={openAddModalHandler} color="teal">
+          <Icon name="add circle" />
+          Add New
+        </Button>
+      </div>
     </div>
       <Table striped>
         <Header headings={headings} />
@@ -160,23 +168,24 @@ const Orders: React.FC<Orders> = ({
           operationSuccess={operationSuccess}
           clearSuccess={clearSuccess}
           mode={mode}
-          addANewwOrder={addANewOrder}
+          addANewOrder={addANewOrder}
           products={products}
           users={users}
         />
       }
-      {/* {openDeleteModal && (
+      {openDeleteModal && (
         <DecisionModal
           open={openDeleteModal}
           close={toggleDeleteModal}
-          heading="Delete Product"
-          body="Are you sure you want to delete this product?"
-          onClick={handleDeleteProduct}
+          heading="Delete Order"
+          body="Are you sure you want to delete this order?"
+          onClick={handleDeleteOrder}
           loading={loading}
           operationSuccess={operationSuccess}
           clearSuccess={clearSuccess}
+          successMessage="Order deleted successfully"
         />
-      )} */}
+      )}
     </>
   );
 };
