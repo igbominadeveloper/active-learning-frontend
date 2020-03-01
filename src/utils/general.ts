@@ -23,7 +23,7 @@ export const downloadCSV = (csv: any, filename: string) => {
     let downloadLink: any;
 
     // CSV file
-    csvFile = new Blob([csv], {type: "text/csv"});
+    csvFile = new Blob([csv], { type: "text/csv" });
 
     // Download link
     downloadLink = document.createElement("a");
@@ -45,17 +45,17 @@ export const downloadCSV = (csv: any, filename: string) => {
 }
 
 
-export const exportTableToCSV = (filename:string) => {
-    const csv:Array<string> = [];
+export const exportTableToCSV = (filename: string) => {
+    const csv: Array<string> = [];
     const rows = document.querySelectorAll("table tr");
-    
-    for (var i = 0; i < rows.length; i++) {
-        const row: Array<string> = [], cols:any = rows[i].querySelectorAll("td, th");
-        
-        for (var j = 0; j < cols.length; j++) 
+
+    for (let i = 0; i < rows.length; i++) {
+        const row: Array<string> = [], cols: any = rows[i].querySelectorAll("td, th");
+
+        for (let j = 0; j < cols.length; j++)
             row.push(cols[j].innerText);
-        
-        csv.push(row.join(","));        
+
+        csv.push(row.join(","));
     }
 
     // Download CSV file
@@ -63,20 +63,25 @@ export const exportTableToCSV = (filename:string) => {
 }
 
 
-export const prepareSelectOptions = (users:Array<User>, products: Array<Book>) : dropDownOptions => {
+export const prepareSelectOptions = (users: Array<User>, products: Array<Book>): dropDownOptions => {
     const userOptions = users.map(user => ({
         key: user.id, value: user.fullName, text: user.fullName,
-    })); 
+    }));
     const productOptions = products.map(product => ({
         key: product.id, value: product.name, text: product.name,
     }));
     return {
-        userOptions: userOptions, 
+        userOptions: userOptions,
         productOptions: productOptions
     }
 };
 
-export const generateId = ():string => {
-    const numbers:string = Math.random().toFixed(10);
+export const generateId = (): string => {
+    const numbers: string = Math.random().toFixed(10);
     return `${numbers[2]}${numbers[3]}${numbers[4]}${numbers[5]}${numbers[6]}${numbers[7]}${numbers[8]}`;
 }
+
+
+export const defaultCover = 'https://react.semantic-ui.com/images/wireframe/square-image.png';
+
+export const dummyArray = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}];

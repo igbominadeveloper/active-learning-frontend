@@ -4,17 +4,31 @@ import { Grid, Segment } from 'semantic-ui-react';
 import NewArrivals from './NewArrivals';
 import AmazingOffers from './AmazingOffers';
 
+import { Book as BookInterface } from '../../../pages/Store';
+
 import './Books.scss';
 
-const Books = () => (
-  <Grid.Row className="Books text-left">
-    <Segment.Group horizontal className="w-100 Books__segments">
-      <Grid columns={16} className="w-100 m-0">
-        <NewArrivals />
-        <AmazingOffers />
-      </Grid>
-    </Segment.Group>
-  </Grid.Row>
-);
+interface Props {
+  products: BookInterface[];
+}
+
+const Books: React.FC<Props> = ({ products }: Props) => {
+  // filter the books by golive date
+  // filter the books by special offer
+
+  const newArrivals:BookInterface[] = products.filter(product => product.specialOffer === true);
+  const amazingOffers:BookInterface[] = products.filter(product => product.specialOffer === true);
+  
+  return (
+    <Grid.Row className="Books text-left">
+      <Segment.Group horizontal className="w-100 Books__segments">
+        <Grid columns={16} className="w-100 m-0">
+          <NewArrivals newArrivals={newArrivals}/>
+          <AmazingOffers amazingOffers={amazingOffers}/>
+        </Grid>
+      </Segment.Group>
+    </Grid.Row>
+  );
+};
 
 export default Books;

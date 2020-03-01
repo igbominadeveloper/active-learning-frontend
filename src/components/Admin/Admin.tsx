@@ -11,7 +11,7 @@ const Admin: React.FC = () => {
 
   return (
     <div className="d-flex justify-content-between Layout__container">
-      <Card className="align-self-start">
+      <Card className="align-self-start" style={{ width: '15%' }}>
         <Card.Content>
           <Icon name="users" />
           <Link to={`${match.url}`}>Manage Users</Link>
@@ -26,7 +26,7 @@ const Admin: React.FC = () => {
         </Card.Content>
       </Card>
       
-      <Segment style={{ width: '70rem', marginTop: '0', marginLeft: '2rem' }}>
+      <Segment style={{ width: '80%' }} className="m-0">
         <Switch>
           <Route path={`${match.url}`} exact component={Users} />
           <Route path={`${match.url}/products`} exact component={Products} />

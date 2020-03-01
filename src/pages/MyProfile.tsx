@@ -34,7 +34,7 @@ const MyProfile: React.FC = () => {
           {user.phone}
         </Card.Content>
       </Card>
-      <Segment style={{ width: '70rem', marginTop: '0', marginLeft: '2rem' }}>
+      <Segment style={{ width: '80%', marginTop: '0', marginLeft: '2rem' }}>
         <h3 className="text-left">Transaction History</h3>
         <Feed>
           {[{}, {}, {}, {}].map(() => (

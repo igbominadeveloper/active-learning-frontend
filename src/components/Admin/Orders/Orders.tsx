@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { Table, Button, Icon } from 'semantic-ui-react';
 
 import Header from '../Tables/Header';
-import Placeholder from '../../Placeholder';
 import OrderRow from '../Tables/OrderRow';
 import EditOrder from './EditOrder';
 import DecisionModal from '../../DecisionModal';
+import RowPlaceholder from '../Tables/RowPlaceholder';
 
 import { Order, Book } from '../../../pages/Store';
 import { User } from '../../../pages/MyProfile';
@@ -25,9 +25,9 @@ const headings: string[] = [
 
 interface Orders {
   fetchAllOrders: Function;
-  orders: [Order];
-  products: [Book];
-  users: [User];
+  orders: Order[];
+  products: Book[];
+  users: User[];
   loading: boolean;
   operationSuccess: boolean;
   editOrderData: Function;
@@ -88,44 +88,22 @@ const Orders: React.FC<Orders> = ({
 
   return (
     <>
-    <div className="d-flex justify-content-between align-items-center">
-      <div className="d-flex justify-content-end w-50">
-        <h3 className="mb-0">Orders</h3>
+      <div className="d-flex justify-content-between align-items-center">
+        <div className="d-flex justify-content-end w-50">
+          <h3 className="mb-0">Orders</h3>
+        </div>
+        <div className="d-flex justify-content-end w-50">
+          <Button onClick={openAddModalHandler} color="teal">
+            <Icon name="add circle" />
+            Add New
+          </Button>
+        </div>
       </div>
-      <div className="d-flex justify-content-end w-50">
-        <Button onClick={openAddModalHandler} color="teal">
-          <Icon name="add circle" />
-          Add New
-        </Button>
-      </div>
-    </div>
       <Table striped>
         <Header headings={headings} />
         <Table.Body>
           {loading ? (
-            <Table.Row>
-              <Table.Cell>
-                <Placeholder />
-              </Table.Cell>
-              <Table.Cell>
-                <Placeholder />
-              </Table.Cell>
-              <Table.Cell>
-                <Placeholder />
-              </Table.Cell>
-              <Table.Cell>
-                <Placeholder />
-              </Table.Cell>
-              <Table.Cell>
-                <Placeholder />
-              </Table.Cell>
-              <Table.Cell>
-                <Placeholder />
-              </Table.Cell>
-              <Table.Cell>
-                <Placeholder />
-              </Table.Cell>
-            </Table.Row>
+            <RowPlaceholder cells={headings} />
           ) : orders.length > 0 ? (
             orders.map(order => (
               <OrderRow
@@ -158,7 +136,7 @@ const Orders: React.FC<Orders> = ({
           )}
         </Table.Body>
       </Table>
-      {openEditModal &&
+      {openEditModal && (
         <EditOrder
           open={openEditModal}
           close={toggleEditModal}
@@ -172,7 +150,7 @@ const Orders: React.FC<Orders> = ({
           products={products}
           users={users}
         />
-      }
+      )}
       {openDeleteModal && (
         <DecisionModal
           open={openDeleteModal}

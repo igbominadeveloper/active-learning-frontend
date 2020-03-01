@@ -1,16 +1,17 @@
 @import '../../../assets/styles/variables';
 
 .Books {
+    margin-top: -5rem;
     .books-section {
-        padding: 4rem 0 !important;
+        padding: 2rem 0 !important;
     }
 
     .details {
-        margin: 2rem;
+        margin: 0rem 1rem;
     }
     &__segments {
         border: none !important;
-        // box-shadow: none !important;
-        // background: none !important;
+        box-shadow: none !important;
+        background: none !important;
     }
 }

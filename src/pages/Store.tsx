@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Product from '../components/Landing/Books/Book';
+import StoreProducts from '../components/StoreProducts';
 
 export interface Book {
   id: string;
@@ -30,11 +30,9 @@ export interface Order {
 
 const Store = () => (
   <div className="Store Layout__container">
-    <h2 className="text-left">Inventory</h2>
+    <h2 className="text-left" style={{ marginBottom: '7rem'}}>Inventory</h2>
     <div className="d-flex flex-wrap">
-      {[{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}].map(() => (
-        <Product key={Math.random()} />
-      ))}
+      <StoreProducts />
     </div>
   </div>
 );

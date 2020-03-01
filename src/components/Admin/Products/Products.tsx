@@ -3,9 +3,9 @@ import { Table, Button, Icon } from 'semantic-ui-react';
 
 import Header from '../Tables/Header';
 import ProductRow from '../Tables/ProductRow';
-import Placeholder from '../../Placeholder';
 import EditProduct from './EditProduct';
 import DecisionModal from '../../DecisionModal';
+import RowPlaceholder from '../Tables/RowPlaceholder';
 
 import { Book } from '../../../pages/Store';
 
@@ -23,7 +23,7 @@ const headings: string[] = [
 
 interface Products {
   fetchAllProducts: Function;
-  products: [Book];
+  products: Book[];
   loading: boolean;
   operationSuccess: boolean;
   editProductData: Function;
@@ -78,41 +78,22 @@ const Products: React.FC<Products> = ({
 
   return (
     <>
-    <div className="d-flex justify-content-between align-items-center">
-      <div className="d-flex justify-content-end w-50">
-        <h3 className="mb-0">Products</h3>
+      <div className="d-flex justify-content-between align-items-center">
+        <div className="d-flex justify-content-end w-50">
+          <h3 className="mb-0">Products</h3>
+        </div>
+        <div className="d-flex justify-content-end w-50">
+          <Button onClick={openAddModalHandler} color="teal">
+            <Icon name="add circle" />
+            Add New
+          </Button>
+        </div>
       </div>
-      <div className="d-flex justify-content-end w-50">
-        <Button onClick={openAddModalHandler} color="teal">
-          <Icon name="add circle" />
-          Add New
-        </Button>
-      </div>
-    </div>
       <Table striped>
         <Header headings={headings} />
         <Table.Body>
           {loading ? (
-            <Table.Row>
-              <Table.Cell>
-                <Placeholder />
-              </Table.Cell>
-              <Table.Cell>
-                <Placeholder />
-              </Table.Cell>
-              <Table.Cell>
-                <Placeholder />
-              </Table.Cell>
-              <Table.Cell>
-                <Placeholder />
-              </Table.Cell>
-              <Table.Cell>
-                <Placeholder />
-              </Table.Cell>
-              <Table.Cell>
-                <Placeholder />
-              </Table.Cell>
-            </Table.Row>
+            <RowPlaceholder cells={headings} />
           ) : products.length > 0 ? (
             products.map(product => (
               <ProductRow
