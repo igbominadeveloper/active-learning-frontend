@@ -19,7 +19,11 @@ body {
   top: 0 !important;
 }
 
-.skiptranslate.goog-te-gadget, .goog-te-banner-frame.skiptranslate
+body.goog-te-banner {
+  display: none;
+}
+
+.skipstranslate, .skiptranslate.goog-te-gadget, .goog-te-banner-frame.skiptranslate
 {
   display: none;
 }
@@ -49,6 +53,9 @@ body {
 }
 .justify-content-between {
   justify-content: space-between !important;
+}
+.justify-content-evenly {
+  justify-content: space-evenly !important;
 }
 .justify-content-around {
   justify-content: space-around !important;

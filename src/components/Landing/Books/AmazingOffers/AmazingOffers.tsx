@@ -14,7 +14,7 @@ const AmazingOffers: React.FC<Props> = ({ amazingOffers }: Props) => (
     <h3 className="Books__text-sub mt-0 text-center">Amazing Offers</h3>
     <div className="details d-flex justify-content-center align-items-center flex-wrap">
       {amazingOffers
-        .filter((book, index) => index < 6)
+        .filter((book, index) => index < 4)
         .map(book => (
           <Book key={Math.random().toFixed(5)} {...book} />
         ))}
