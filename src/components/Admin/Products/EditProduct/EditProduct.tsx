@@ -87,7 +87,7 @@ const EditProduct: React.FC<any> = (props: EditProductProps) => {
               iconPosition="left"
               placeholder="Name"
               value={name}
-              type="name"
+              type="text"
               onChange={event => setName(event.target.value)}
               required
             />

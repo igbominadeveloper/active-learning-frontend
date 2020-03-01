@@ -5,6 +5,12 @@ import { Order } from '../../../../pages/Store';
 
 import '../Row.scss';
 
+enum orderStatus {
+  COMPLETED = 'COMPLETED',
+  PENDING = 'PENDING',
+  CANCELLED = 'CANCELLED',
+  DECLINED = 'DECLINED',
+};
 interface TableRowProps {
   id: string;
   datePlaced: string;
@@ -12,6 +18,8 @@ interface TableRowProps {
   productName: string;
   actions: any;
   order: Order;
+  cost: number;
+  status: orderStatus;
 }
 
 const OrderRow: React.FC<TableRowProps> = ({
@@ -21,12 +29,16 @@ const OrderRow: React.FC<TableRowProps> = ({
   productName,
   actions,
   order,
+  cost,
+  status
 }: TableRowProps) => (
   <Table.Row>
     <Table.Cell>{id}</Table.Cell>
     <Table.Cell>{user}</Table.Cell>
     <Table.Cell>{productName}</Table.Cell>
     <Table.Cell>{datePlaced}</Table.Cell>
+    <Table.Cell>{cost}</Table.Cell>
+    <Table.Cell>{status.toLowerCase()}</Table.Cell>
     <Table.Cell className="actions">
       <Icon
         name="edit outline"
