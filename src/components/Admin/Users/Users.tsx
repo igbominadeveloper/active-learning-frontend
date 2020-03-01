@@ -3,9 +3,9 @@ import { Table, Button, Icon } from 'semantic-ui-react';
 
 import Header from '../Tables/Header';
 import UserRow from '../Tables/UserRow';
-import Placeholder from '../../Placeholder';
 import DecisionModal from '../../DecisionModal';
 import EditUser from './EditUser';
+import RowPlaceholder from '../Tables/RowPlaceholder';
 
 import { User } from '../../../pages/MyProfile';
 
@@ -17,7 +17,7 @@ const headings: string[] = ['FullName', 'Email', 'Phone Number', 'Actions'];
 
 interface Users {
   fetchAllUsers: Function;
-  users: [User];
+  users: User[];
   loading: boolean;
   operationSuccess: boolean;
   editUserData: Function;
@@ -68,10 +68,7 @@ const Users: React.FC<Users> = ({
           <h3 className="mb-0">Users</h3>
         </div>
         <div className="d-flex justify-content-end w-50">
-          <Button
-            onClick={() => exportTableToCSV('users.csv')}
-            color="teal"
-          >
+          <Button onClick={() => exportTableToCSV('users.csv')} color="teal">
             <Icon name="file excel outline" />
             Export to csv
           </Button>
@@ -81,20 +78,7 @@ const Users: React.FC<Users> = ({
         <Header headings={headings} />
         <Table.Body>
           {loading ? (
-            <Table.Row>
-              <Table.Cell>
-                <Placeholder />
-              </Table.Cell>
-              <Table.Cell>
-                <Placeholder />
-              </Table.Cell>
-              <Table.Cell>
-                <Placeholder />
-              </Table.Cell>
-              <Table.Cell>
-                <Placeholder />
-              </Table.Cell>
-            </Table.Row>
+            <RowPlaceholder cells={headings} />
           ) : users.length > 0 ? (
             users.map(user => (
               <UserRow

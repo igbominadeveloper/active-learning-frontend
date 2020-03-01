@@ -3,7 +3,7 @@ import * as ACTIONS from '../constants';
 export interface state {
   loading: boolean;
   error: any;
-  data: any;
+  data: [];
   operationSuccess: boolean
 };
 
@@ -13,7 +13,7 @@ interface ActionTypes {
 }
 
 const productsDefaultState: state = {
-  data: {},
+  data: [],
   loading: false,
   error: null,
   operationSuccess: false,

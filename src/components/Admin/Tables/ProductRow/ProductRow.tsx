@@ -3,9 +3,11 @@ import { Table, Icon, Image } from 'semantic-ui-react';
 
 import { Book } from '../../../../pages/Store';
 
+import { defaultCover } from '../../../../utils/general';
+
 import '../Row.scss';
 
-const defaultCover = 'https://react.semantic-ui.com/images/wireframe/square-image.png';
+
 
 interface TableRowProps {
   name: string;

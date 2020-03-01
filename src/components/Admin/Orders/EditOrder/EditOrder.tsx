@@ -23,8 +23,8 @@ interface EditOrderProps {
   clearSuccess: Function;
   mode: mode;
   addANewOrder: Function;
-  users: [User];
-  products: [Book];
+  users: User[];
+  products: Book[];
 }
 
 const EditOrder: React.FC<any> = (props: EditOrderProps) => {

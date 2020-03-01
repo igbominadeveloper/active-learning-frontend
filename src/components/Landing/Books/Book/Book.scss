@@ -2,9 +2,11 @@
 
 .Book {
     margin: 1rem 2rem 1rem 0;
+    min-width: 18rem;
     .comment {
+        min-width: 18rem;
         height: 10rem;
-        width: 17.5rem;
+        width: 20rem;
         padding: 15px;
         margin-top: 2rem;
         img {
@@ -14,7 +16,7 @@
         .actions {
             margin: 5px 0;
             a {
-                color: $primary_color;
+                color: $primary_black;
             }
         }
     }

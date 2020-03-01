@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import Landing from './Landing';
+import StoreProducts from './StoreProducts';
 
 import { fetchAllProducts } from '../../redux/actions/products';
 
@@ -9,4 +9,4 @@ const mapStateToProps = (state: any) => ({
     loading: state.products.loading,
 });
 
-export default connect(mapStateToProps, { fetchAllProducts })(Landing);
+export default connect(mapStateToProps, { fetchAllProducts })(StoreProducts);
