@@ -168,6 +168,7 @@ const Products: React.FC<Products> = ({
           loading={loading}
           operationSuccess={operationSuccess}
           clearSuccess={clearSuccess}
+          successMessage="Product deleted successfully"
         />
       )}
     </>

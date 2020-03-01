@@ -125,8 +125,7 @@ const addNewProductError = (payload: any) => ({
 const addNewProduct = (newProduct: Book): Promise<any> => new Promise((resolve, reject) =>
     setTimeout(() => {
         if(newProduct) {
-            products.push(newProduct);
-            return resolve(products)
+            return resolve([newProduct, ...products])
         }
         return reject('An Error occured');
     }, 2000));

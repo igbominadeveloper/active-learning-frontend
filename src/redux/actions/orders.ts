@@ -3,6 +3,7 @@ import * as ACTIONS from '../constants';
 import orders from '../mocks/orders.json';
 
 import { Order } from '../../pages/Store';
+import { generateId } from '../../utils/general';
 
 const getOrdersSuccess = (payload: any) => ({
     type: ACTIONS.GET_ORDERS_SUCCESS,
@@ -126,8 +127,7 @@ const addNewOrderError = (payload: any) => ({
 const addNewOrder = (newOrder: Order): Promise<any> => new Promise((resolve, reject) =>
     setTimeout(() => {
         if(newOrder) {
-            orders.push(newOrder);
-            return resolve(orders);
+            return resolve([newOrder, ...orders]);
         }
         return reject('An Error occured');
     }, 2000));
@@ -135,7 +135,7 @@ const addNewOrder = (newOrder: Order): Promise<any> => new Promise((resolve, rej
 export const addANewOrder = (newOrder: Order) => async (dispatch: Function) => {
     try {
         dispatch(addNewOrderLoading());
-        const response = await addNewOrder(newOrder);
+        const response = await addNewOrder({id: generateId(), ...newOrder});
         dispatch(addNewOrderSuccess(response));
     } catch (errors) {
         dispatch(addNewOrderError(errors));

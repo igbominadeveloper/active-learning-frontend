@@ -75,3 +75,8 @@ export const prepareSelectOptions = (users:Array<User>, products: Array<Book>) :
         productOptions: productOptions
     }
 };
+
+export const generateId = ():string => {
+    const numbers:string = Math.random().toFixed(10);
+    return `${numbers[2]}${numbers[3]}${numbers[4]}${numbers[5]}${numbers[6]}${numbers[7]}${numbers[8]}`;
+}

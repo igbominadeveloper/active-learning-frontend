@@ -12,6 +12,7 @@ interface IProps {
   loading?: boolean;
   operationSuccess?: boolean;
   clearSuccess: Function;
+  successMessage?: string;
 }
 
 
@@ -19,7 +20,7 @@ const DecisionModal: React.FC<any> = (props: IProps) => {
   useEffect(() => {
     if(props.operationSuccess){
       props.close();
-      toast.success('Operation successful');
+      toast.success(props.successMessage ? props.successMessage : 'Operation successful');
       props.clearSuccess();
     }
   }, [props])
