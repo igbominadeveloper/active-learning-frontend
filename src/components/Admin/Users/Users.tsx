@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { Table, Button, Icon } from 'semantic-ui-react';
+import React, { useEffect, useState } from 'react';
+import { Table, Button, Icon, Pagination } from 'semantic-ui-react';
 
 import Header from '../Tables/Header';
 import UserRow from '../Tables/UserRow';
@@ -36,6 +36,7 @@ const Users: React.FC<Users> = ({
 }: Users) => {
   const { openEditModal, toggleEditModal, openDeleteModal, toggleDeleteModal } = useModal();
   const { setUser, user } = useUsersForm();
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     fetchAllUsers();
@@ -61,6 +62,15 @@ const Users: React.FC<Users> = ({
     deleteUserAccount(user.id);
   };
 
+  const paginatedItems = (currentPage: number) => {
+    const limit: number = 5;
+    const min = limit * currentPage - limit;
+    const max = limit * currentPage - 1;
+    return users.slice(min, max);
+  };
+
+  const handlePageChange = (event: any, data: any) => setCurrentPage(data.activePage);
+
   return (
     <>
       <div className="d-flex justify-content-center align-items-center">
@@ -80,7 +90,7 @@ const Users: React.FC<Users> = ({
           {loading ? (
             <RowPlaceholder cells={headings} />
           ) : users.length > 0 ? (
-            users.map(user => (
+            paginatedItems(currentPage).map(user => (
               <UserRow
                 key={Math.random().toFixed(5)}
                 actions={actions}
@@ -108,6 +118,14 @@ const Users: React.FC<Users> = ({
           )}
         </Table.Body>
       </Table>
+
+      {users.length > 0 && (
+        <Pagination
+          defaultActivePage={1}
+          totalPages={Math.round(users.length / 5)}
+          onPageChange={handlePageChange}
+        />
+      )}
       {openEditModal && (
         <EditUser
           open={openEditModal}

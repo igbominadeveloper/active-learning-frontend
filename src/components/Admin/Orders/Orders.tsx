@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Table, Button, Icon } from 'semantic-ui-react';
+import { Table, Button, Icon, Pagination } from 'semantic-ui-react';
 
 import Header from '../Tables/Header';
 import OrderRow from '../Tables/OrderRow';
@@ -55,6 +55,7 @@ const Orders: React.FC<Orders> = ({
   const { openEditModal, toggleEditModal, openDeleteModal, toggleDeleteModal } = useModal();
   const { order, setOrder } = useOrdersForm();
   const [mode, setMode] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     Promise.all([fetchAllProducts(), fetchAllUsers(), fetchAllOrders()]);
@@ -86,6 +87,15 @@ const Orders: React.FC<Orders> = ({
     deleteAnOrder(order.id);
   };
 
+  const paginatedItems = (currentPage: number) => {
+    const limit: number = 5;
+    const min = limit * currentPage - limit;
+    const max = limit * currentPage - 1;
+    return orders.slice(min, max);
+  };
+
+  const handlePageChange = (event: any, data: any) => setCurrentPage(data.activePage);
+
   return (
     <>
       <div className="d-flex justify-content-between align-items-center">
@@ -105,7 +115,7 @@ const Orders: React.FC<Orders> = ({
           {loading ? (
             <RowPlaceholder cells={headings} />
           ) : orders.length > 0 ? (
-            orders.map(order => (
+            paginatedItems(currentPage).map(order => (
               <OrderRow
                 key={Math.random().toFixed(5)}
                 actions={actions}
@@ -136,6 +146,13 @@ const Orders: React.FC<Orders> = ({
           )}
         </Table.Body>
       </Table>
+      {orders.length > 0 && (
+        <Pagination
+          defaultActivePage={1}
+          totalPages={Math.round(orders.length / 5)}
+          onPageChange={handlePageChange}
+        />
+      )}
       {openEditModal && (
         <EditOrder
           open={openEditModal}

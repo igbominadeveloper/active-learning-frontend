@@ -10,21 +10,14 @@ const RowPlaceholder: React.FC<RowProps> = ({ cells }: RowProps) => (
   <>
     <Table.Row>
       {cells.map(() => 
-      <Table.Cell>
+      <Table.Cell key={Math.random().toFixed(6)}>
         <Placeholder />
       </Table.Cell>
       )}
     </Table.Row>
     <Table.Row>
     {cells.map(() => 
-      <Table.Cell>
-        <Placeholder />
-      </Table.Cell>
-      )}
-    </Table.Row>
-    <Table.Row>
-    {cells.map(() => 
-      <Table.Cell>
+      <Table.Cell key={Math.random().toFixed(6)}>
         <Placeholder />
       </Table.Cell>
       )}
