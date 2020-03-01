@@ -34,7 +34,7 @@ const StoreProducts: React.FC<ProductInterface> = ({
 
   return (
     <Grid.Row className="Books w-100">
-      <Grid columns={16} className="w-100 m-0">
+      <Grid columns={16} className="w-100 m-0 d-flex justify-content-evenly">
         {loading ? (
           dummyArray.map(() => <CardLoader key={Math.random().toFixed(6)} />)
         ) : products.length > 0 ? (
