@@ -14,15 +14,15 @@ const Admin: React.FC = () => {
       <Card className="align-self-start">
         <Card.Content>
           <Icon name="users" />
-          <Link to={`${match.url}`}>Users Management</Link>
+          <Link to={`${match.url}`}>Manage Users</Link>
         </Card.Content>
         <Card.Content>
           <Icon name="tag" />
-          <Link to={`${match.url}/products`}>Products Management</Link>
+          <Link to={`${match.url}/products`}>Manage Products</Link>
         </Card.Content>
         <Card.Content>
           <Icon name="cart" />
-          <Link to={`${match.url}/orders`}>Orders Management</Link>
+          <Link to={`${match.url}/orders`}>Manage Orders</Link>
         </Card.Content>
       </Card>
       

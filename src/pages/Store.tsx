@@ -13,11 +13,19 @@ export interface Book {
   language: string;
 }
 
+enum orderStatus {
+  COMPLETED = 'COMPLETED',
+  PENDING = 'PENDING',
+  CANCELLED = 'CANCELLED',
+  DECLINED = 'DECLINED',
+};
 export interface Order {
   id: string;
   datePlaced: string;
   user: string;
   productName: string;
+  cost: number;
+  status: orderStatus;
 }
 
 const Store = () => (

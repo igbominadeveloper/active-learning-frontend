@@ -1,4 +1,16 @@
 import LocalStorage from "./localstorage";
+import { User } from "../pages/MyProfile";
+import { Book } from "../pages/Store";
+
+export type SelectionOption = {
+    key: string;
+    value: string;
+    text: string;
+}
+interface dropDownOptions {
+    productOptions: Array<SelectionOption>;
+    userOptions: Array<SelectionOption>;
+}
 
 export const logout = (): void => {
     LocalStorage.removeItem('user');
@@ -49,3 +61,17 @@ export const exportTableToCSV = (filename:string) => {
     // Download CSV file
     downloadCSV(csv.join("\n"), filename);
 }
+
+
+export const prepareSelectOptions = (users:Array<User>, products: Array<Book>) : dropDownOptions => {
+    const userOptions = users.map(user => ({
+        key: user.id, value: user.fullName, text: user.fullName,
+    })); 
+    const productOptions = products.map(product => ({
+        key: product.id, value: product.name, text: product.name,
+    }));
+    return {
+        userOptions: userOptions, 
+        productOptions: productOptions
+    }
+};

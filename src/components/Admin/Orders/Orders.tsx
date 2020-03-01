@@ -4,31 +4,38 @@ import { Table } from 'semantic-ui-react';
 import Header from '../Tables/Header';
 import Placeholder from '../../Placeholder';
 import OrderRow from '../Tables/OrderRow';
-// import EditProduct from './EditProduct';
+import EditOrder from './EditOrder';
 import DecisionModal from '../../DecisionModal';
 
-import { Order } from '../../../pages/Store';
+import { Order, Book } from '../../../pages/Store';
 
 import useModal from '../../../custom-hooks/useModal';
 import { useOrdersForm } from '../../../custom-hooks/useFormStates';
+import { User } from '../../../pages/MyProfile';
 
 const headings: string[] = [
   'Order Id',
   'Customer',
   'Item',
   'Purchase Date',
+  'Cost ($)',
+  'Status',
   'Actions',
 ];
 
 interface Orders {
   fetchAllOrders: Function;
   orders: [Order];
+  products: [Book];
+  users: [User];
   loading: boolean;
   operationSuccess: boolean;
-//   editProductData: Function;
+  editOrderData: Function;
   clearSuccess: Function;
+  addANewOrder: Function;
 //   deleteAProduct: Function;
-//   addANewProduct: Function;
+  fetchAllProducts: Function;
+  fetchAllUsers: Function;
 }
 
 const Orders: React.FC<Orders> = ({
@@ -37,18 +44,22 @@ const Orders: React.FC<Orders> = ({
   loading,
   operationSuccess,
   clearSuccess,
-  // editProductData,
+  editOrderData,
   // deleteAProduct,
-  // addANewProduct,
+  addANewOrder,
+  fetchAllProducts,
+  fetchAllUsers,
+  products,
+  users,
 }: Orders) => {
   const { openEditModal, toggleEditModal, openDeleteModal, toggleDeleteModal } = useModal();
   const { order, setOrder } = useOrdersForm();
   const [mode, setMode] = useState('');
 
   useEffect(() => {
-    fetchAllOrders();
+    Promise.all([fetchAllProducts(), fetchAllUsers(), fetchAllOrders()]);
     return () => {};
-  }, [fetchAllOrders]);
+  }, [fetchAllOrders, fetchAllProducts, fetchAllUsers]);
 
   const openEditModalHandler = (orderToEdit: Order): void => {
     setMode('EDIT');
@@ -103,6 +114,9 @@ const Orders: React.FC<Orders> = ({
               <Table.Cell>
                 <Placeholder />
               </Table.Cell>
+              <Table.Cell>
+                <Placeholder />
+              </Table.Cell>
             </Table.Row>
           ) : orders.length > 0 ? (
             orders.map(order => (
@@ -114,6 +128,8 @@ const Orders: React.FC<Orders> = ({
                 productName={order.productName}
                 order={order}
                 datePlaced={order.datePlaced}
+                cost={order.cost}
+                status={order.status}
               />
             ))
           ) : (
@@ -134,20 +150,22 @@ const Orders: React.FC<Orders> = ({
           )}
         </Table.Body>
       </Table>
-      {/* {openEditModal && (
-        <EditProduct
+      {openEditModal &&
+        <EditOrder
           open={openEditModal}
           close={toggleEditModal}
-          product={product}
+          order={order}
           loading={loading}
-          editProductData={editProductData}
+          editOrderData={editOrderData}
           operationSuccess={operationSuccess}
           clearSuccess={clearSuccess}
           mode={mode}
-          addANewProduct={addANewProduct}
+          addANewwOrder={addANewOrder}
+          products={products}
+          users={users}
         />
-      )}
-      {openDeleteModal && (
+      }
+      {/* {openDeleteModal && (
         <DecisionModal
           open={openDeleteModal}
           close={toggleDeleteModal}
