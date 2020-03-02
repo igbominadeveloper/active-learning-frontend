@@ -13,7 +13,7 @@ interface ActionTypes {
 }
 
 const usersDefaultState: state = {
-  data: {},
+  data: [],
   loading: false,
   error: null,
   operationSuccess: false,

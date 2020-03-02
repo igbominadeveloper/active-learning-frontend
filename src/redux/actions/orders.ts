@@ -3,7 +3,7 @@ import * as ACTIONS from '../constants';
 import orders from '../mocks/orders.json';
 
 import { Order } from '../../pages/Store';
-import { generateId } from '../../utils/general';
+import { generateId, getToday } from '../../utils/general';
 
 const getOrdersSuccess = (payload: any) => ({
     type: ACTIONS.GET_ORDERS_SUCCESS,
@@ -127,6 +127,7 @@ const addNewOrderError = (payload: any) => ({
 const addNewOrder = (newOrder: Order): Promise<any> => new Promise((resolve, reject) =>
     setTimeout(() => {
         if(newOrder) {
+            newOrder.datePlaced = getToday();
             return resolve([newOrder, ...orders]);
         }
         return reject('An Error occured');

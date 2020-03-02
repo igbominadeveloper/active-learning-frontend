@@ -25,9 +25,6 @@ interface EditProductProps {
 const EditProduct: React.FC<any> = (props: EditProductProps) => {
   const [name, setName] = useState(props.mode === 'EDIT' ? props.product.name : '');
   const [author, setAuthor] = useState(props.mode === 'EDIT' ? props.product.author : '');
-  const [publishedAt, setPublishedAt] = useState(
-    props.mode === 'EDIT' ? props.product.publishedAt : ''
-  );
   const [specialOffer, setSpecialOffer] = useState(
     props.mode === 'EDIT' ? props.product.specialOffer : false
   );
@@ -36,11 +33,11 @@ const EditProduct: React.FC<any> = (props: EditProductProps) => {
   const [formHasErrors, setFormHasErrors] = useState(false);
 
   useEffect(() => {
-    const fields: any[] = [name, author, publishedAt, language];
+    const fields: any[] = [name, author, language];
     const emptyField: boolean = fields.some(field => field.length < 1);
     if (emptyField) return setFormHasErrors(true);
     return setFormHasErrors(false);
-  }, [name, author, publishedAt, language]);
+  }, [name, author, language]);
 
   useEffect(() => {
     if (props.operationSuccess) {
@@ -56,7 +53,6 @@ const EditProduct: React.FC<any> = (props: EditProductProps) => {
       ? props.editProductData(props.product.id, {
           name,
           author,
-          publishedAt,
           specialOffer,
           language,
           cover,
@@ -64,7 +60,6 @@ const EditProduct: React.FC<any> = (props: EditProductProps) => {
       : props.addANewProduct({
           name,
           author,
-          publishedAt,
           specialOffer,
           language,
           cover,
@@ -91,6 +86,7 @@ const EditProduct: React.FC<any> = (props: EditProductProps) => {
               onChange={event => setName(event.target.value)}
               required
             />
+          <Form.Group inline widths="equal">
             <Form.Input
               fluid
               icon="user"
@@ -102,17 +98,6 @@ const EditProduct: React.FC<any> = (props: EditProductProps) => {
               required
             />
 
-            <Form.Group inline widths="equal">
-              <Form.Input
-                fluid
-                icon="calendar times outline"
-                iconPosition="left"
-                placeholder="publishedAt"
-                type="date"
-                value={publishedAt}
-                onChange={event => setPublishedAt(event.target.value)}
-                required
-              />
               <Select
                 fluid
                 placeholder="Language"

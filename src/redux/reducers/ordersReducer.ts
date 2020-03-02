@@ -13,7 +13,7 @@ interface ActionTypes {
 }
 
 const ordersDefaultState: state = {
-  data: {},
+  data: [],
   loading: false,
   error: null,
   operationSuccess: false,

@@ -13,18 +13,17 @@ interface Props {
 }
 
 const Books: React.FC<Props> = ({ products }: Props) => {
-  // filter the books by golive date
-  // filter the books by special offer
+  const newArrivals: BookInterface[] = products.sort(
+    (current, next) => Date.parse(next.publishedAt) - Date.parse(current.publishedAt)
+  );
+  const amazingOffers: BookInterface[] = products.filter(product => product.specialOffer === true);
 
-  const newArrivals:BookInterface[] = products.filter(product => product.specialOffer === true);
-  const amazingOffers:BookInterface[] = products.filter(product => product.specialOffer === true);
-  
   return (
     <Grid.Row className="Books text-left">
       <Segment.Group horizontal className="w-100 Books__segments">
         <Grid columns={16} className="w-100 m-0">
-          <NewArrivals newArrivals={newArrivals}/>
-          <AmazingOffers amazingOffers={amazingOffers}/>
+          <NewArrivals newArrivals={newArrivals} />
+          <AmazingOffers amazingOffers={amazingOffers} />
         </Grid>
       </Segment.Group>
     </Grid.Row>
