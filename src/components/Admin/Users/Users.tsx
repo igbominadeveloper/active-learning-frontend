@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Table, Button, Icon, Pagination } from 'semantic-ui-react';
+import { Table, Button, Icon, Pagination, Input } from 'semantic-ui-react';
 
 import Header from '../Tables/Header';
 import UserRow from '../Tables/UserRow';
@@ -15,9 +15,10 @@ import { exportTableToCSV } from '../../../utils/general';
 
 const headings: string[] = ['FullName', 'Email', 'Phone Number', 'Actions'];
 
+type users = User[];
 interface Users {
   fetchAllUsers: Function;
-  users: User[];
+  users: users;
   loading: boolean;
   operationSuccess: boolean;
   editUserData: Function;
@@ -37,11 +38,30 @@ const Users: React.FC<Users> = ({
   const { openEditModal, toggleEditModal, openDeleteModal, toggleDeleteModal } = useModal();
   const { setUser, user } = useUsersForm();
   const [currentPage, setCurrentPage] = useState(1);
+  const [searchInput, setSearchInput] = useState('');
+  const [usersToDisplay, setUsersToDisplay] = useState<users>(users);
 
   useEffect(() => {
     fetchAllUsers();
     return () => {};
   }, [fetchAllUsers]);
+
+  useEffect(() => {
+    const limit: number = 5;
+    const min = limit * currentPage - limit;
+    const max = limit * currentPage;
+
+    if (searchInput.length > 0) {
+      const foundUsers = users.filter(user => user.email.toLocaleLowerCase().match(searchInput.toLocaleLowerCase()) || user.fullName.toLocaleLowerCase().match(searchInput.toLocaleLowerCase()));
+      return setUsersToDisplay(foundUsers.slice(min, max));
+    }
+
+    if (users.length > 0) {
+      setUsersToDisplay(users.slice(min, max));
+    }
+    return () => {};
+  }, [currentPage, users, searchInput]);
+
 
   const openEditModalHandler = (userToEdit: User): void => {
     setUser(userToEdit);
@@ -62,13 +82,6 @@ const Users: React.FC<Users> = ({
     deleteUserAccount(user.id);
   };
 
-  const paginatedItems = (currentPage: number) => {
-    const limit: number = 5;
-    const min = limit * currentPage - limit;
-    const max = limit * currentPage - 1;
-    return users.slice(min, max);
-  };
-
   const handlePageChange = (event: any, data: any) => setCurrentPage(data.activePage);
 
   return (
@@ -78,6 +91,14 @@ const Users: React.FC<Users> = ({
           <h3 className="mb-0">Users</h3>
         </div>
         <div className="d-flex justify-content-end w-50">
+          <Input
+            onChange={event => setSearchInput(event.target.value)}
+            value={searchInput}
+            placeholder="Search..."
+            icon="search"
+            style={{ marginRight: '1rem' }}
+          />
+
           <Button onClick={() => exportTableToCSV('users.csv')} color="teal">
             <Icon name="file excel outline" />
             Export to csv
@@ -90,7 +111,7 @@ const Users: React.FC<Users> = ({
           {loading ? (
             <RowPlaceholder cells={headings} />
           ) : users.length > 0 ? (
-            paginatedItems(currentPage).map(user => (
+            usersToDisplay.map(user => (
               <UserRow
                 key={Math.random().toFixed(5)}
                 actions={actions}

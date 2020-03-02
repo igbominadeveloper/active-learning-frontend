@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Table, Button, Icon, Pagination } from 'semantic-ui-react';
+import { Table, Button, Icon, Pagination, Input } from 'semantic-ui-react';
 
 import Header from '../Tables/Header';
 import ProductRow from '../Tables/ProductRow';
@@ -21,9 +21,11 @@ const headings: string[] = [
   'Actions',
 ];
 
+type products = Book[];
+
 interface Products {
   fetchAllProducts: Function;
-  products: Book[];
+  products: products;
   loading: boolean;
   operationSuccess: boolean;
   editProductData: Function;
@@ -46,11 +48,41 @@ const Products: React.FC<Products> = ({
   const { product, setProduct } = useProductsForm();
   const [mode, setMode] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
+  const [searchInput, setSearchInput] = useState('');
+  const [productsToDisplay, setProductsToDisplay] = useState<products>(products);
 
   useEffect(() => {
     fetchAllProducts();
     return () => {};
   }, [fetchAllProducts]);
+
+  useEffect(() => {
+    const limit: number = 5;
+    const min = limit * currentPage - limit;
+    const max = limit * currentPage;
+
+    if (searchInput.length > 0) {
+      const foundproducts = products
+        .filter(
+          product =>
+            product.name.toLowerCase().match(searchInput.toLowerCase()) ||
+            product.author.toLowerCase().match(searchInput.toLowerCase()) ||
+            product.publishedAt.match(searchInput)
+        )
+        .slice(min, max);
+
+      return setProductsToDisplay(foundproducts);
+    }
+
+    if (products.length > 0) {
+      setProductsToDisplay(
+        products
+          .sort((current, next) => Date.parse(next.publishedAt) - Date.parse(current.publishedAt))
+          .slice(min, max)
+      );
+    }
+    return () => {};
+  }, [currentPage, products, searchInput]);
 
   const openEditModalHandler = (productToEdit: Book): void => {
     setMode('EDIT');
@@ -77,13 +109,6 @@ const Products: React.FC<Products> = ({
     deleteAProduct(product.id);
   };
 
-  const paginatedItems = (currentPage: number) => {
-    const limit: number = 5;
-    const min = limit * currentPage - limit;
-    const max = limit * currentPage - 1;
-    return products.slice(min, max);
-  };
-
   const handlePageChange = (event: any, data: any) => setCurrentPage(data.activePage);
 
   return (
@@ -93,6 +118,13 @@ const Products: React.FC<Products> = ({
           <h3 className="mb-0">Products</h3>
         </div>
         <div className="d-flex justify-content-end w-50">
+          <Input
+            onChange={event => setSearchInput(event.target.value)}
+            value={searchInput}
+            placeholder="Search..."
+            icon="search"
+            style={{ marginRight: '1rem' }}
+          />
           <Button onClick={openAddModalHandler} color="teal">
             <Icon name="add circle" />
             Add New
@@ -105,7 +137,7 @@ const Products: React.FC<Products> = ({
           {loading ? (
             <RowPlaceholder cells={headings} />
           ) : products.length > 0 ? (
-            paginatedItems(currentPage).map(product => (
+            productsToDisplay.map(product => (
               <ProductRow
                 key={Math.random().toFixed(5)}
                 actions={actions}

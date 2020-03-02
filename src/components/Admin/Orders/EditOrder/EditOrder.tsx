@@ -40,11 +40,14 @@ const EditOrder: React.FC<any> = (props: EditOrderProps) => {
   const { userOptions, productOptions } = prepareSelectOptions(props.users, props.products);
 
   useEffect(() => {
-    const fields: any[] = [productName, user, datePlaced, cost, status];
+    const fields: any[] = [productName, user, cost, status];
+    if(props.mode === 'EDIT'){
+      fields.push(datePlaced);
+    }
     const emptyField: boolean = fields.some(field => field.length < 1);
     if (emptyField) return setFormHasErrors(true);
     return setFormHasErrors(false);
-  }, [productName, user, datePlaced, cost, status]);
+  }, [productName, user, cost, status, datePlaced, props.mode]);
 
   useEffect(() => {
     if (props.operationSuccess) {

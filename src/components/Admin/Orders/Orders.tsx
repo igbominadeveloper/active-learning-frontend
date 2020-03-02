@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Table, Button, Icon, Pagination } from 'semantic-ui-react';
+import { Table, Button, Icon, Pagination, Input } from 'semantic-ui-react';
 
 import Header from '../Tables/Header';
 import OrderRow from '../Tables/OrderRow';
@@ -23,9 +23,10 @@ const headings: string[] = [
   'Actions',
 ];
 
+type orders = Order[];
 interface Orders {
   fetchAllOrders: Function;
-  orders: Order[];
+  orders: orders;
   products: Book[];
   users: User[];
   loading: boolean;
@@ -56,11 +57,42 @@ const Orders: React.FC<Orders> = ({
   const { order, setOrder } = useOrdersForm();
   const [mode, setMode] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
+  const [searchInput, setSearchInput] = useState('');
+  const [ordersToDisplay, setOrdersToDisplay] = useState<orders>(orders);
 
   useEffect(() => {
     Promise.all([fetchAllProducts(), fetchAllUsers(), fetchAllOrders()]);
     return () => {};
   }, [fetchAllOrders, fetchAllProducts, fetchAllUsers]);
+
+  useEffect(() => {
+    const limit: number = 5;
+    const min = limit * currentPage - limit;
+    const max = limit * currentPage;
+
+    if (searchInput.length > 0) {
+      const foundOrders = orders
+        .filter(
+          order =>
+            order.user.toLowerCase().match(searchInput.toLowerCase()) ||
+            order.productName.toLowerCase().match(searchInput.toLowerCase()) ||
+            order.id.match(searchInput) ||
+            order.datePlaced.match(searchInput)
+        )
+        .slice(min, max);
+
+      return setOrdersToDisplay(foundOrders);
+    }
+
+    if (orders.length > 0) {
+      setOrdersToDisplay(
+        orders
+          .sort((current, next) => Date.parse(next.datePlaced) - Date.parse(current.datePlaced))
+          .slice(min, max)
+      );
+    }
+    return () => {};
+  }, [currentPage, orders, searchInput]);
 
   const openEditModalHandler = (orderToEdit: Order): void => {
     setMode('EDIT');
@@ -87,13 +119,6 @@ const Orders: React.FC<Orders> = ({
     deleteAnOrder(order.id);
   };
 
-  const paginatedItems = (currentPage: number) => {
-    const limit: number = 5;
-    const min = limit * currentPage - limit;
-    const max = limit * currentPage - 1;
-    return orders.slice(min, max);
-  };
-
   const handlePageChange = (event: any, data: any) => setCurrentPage(data.activePage);
 
   return (
@@ -103,6 +128,13 @@ const Orders: React.FC<Orders> = ({
           <h3 className="mb-0">Orders</h3>
         </div>
         <div className="d-flex justify-content-end w-50">
+          <Input
+            onChange={event => setSearchInput(event.target.value)}
+            value={searchInput}
+            placeholder="Search..."
+            icon="search"
+            style={{ marginRight: '1rem' }}
+          />
           <Button onClick={openAddModalHandler} color="teal">
             <Icon name="add circle" />
             Add New
@@ -115,7 +147,7 @@ const Orders: React.FC<Orders> = ({
           {loading ? (
             <RowPlaceholder cells={headings} />
           ) : orders.length > 0 ? (
-            paginatedItems(currentPage).map(order => (
+            ordersToDisplay.map(order => (
               <OrderRow
                 key={Math.random().toFixed(5)}
                 actions={actions}
@@ -146,7 +178,7 @@ const Orders: React.FC<Orders> = ({
           )}
         </Table.Body>
       </Table>
-      {orders.length > 0 && (
+      {ordersToDisplay.length > 0 && (
         <Pagination
           defaultActivePage={1}
           totalPages={Math.round(orders.length / 5)}

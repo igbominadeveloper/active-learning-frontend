@@ -2,6 +2,7 @@ import * as ACTIONS from '../constants';
 
 import products from '../mocks/products.json';
 import { Book } from '../../pages/Store';
+import { getToday } from '../../utils/general';
 
 const getProductsSuccess = (payload: any) => ({
     type: ACTIONS.GET_PRODUCTS_SUCCESS,
@@ -53,9 +54,9 @@ export const clearSuccess = () => ({
 
 const editProduct = (id: string, productBody: object): Promise<any> => new Promise((resolve, reject) =>
     setTimeout(() => {
-        if(products) {
+        if (products) {
             const indexToUpdate = products.findIndex(product => product.id === id);
-            const newObject = {...products[indexToUpdate], ...productBody};
+            const newObject = { ...products[indexToUpdate], ...productBody };
             products[indexToUpdate] = newObject;
             return resolve(products)
         }
@@ -89,7 +90,7 @@ const deleteProductError = (payload: any) => ({
 
 const deleteProduct = (id: string): Promise<any> => new Promise((resolve, reject) =>
     setTimeout(() => {
-        if(products) {
+        if (products) {
             const indexToDelete = products.findIndex(product => product.id === id);
             products.splice(indexToDelete, 1);
             return resolve(products)
@@ -124,7 +125,8 @@ const addNewProductError = (payload: any) => ({
 
 const addNewProduct = (newProduct: Book): Promise<any> => new Promise((resolve, reject) =>
     setTimeout(() => {
-        if(newProduct) {
+        if (newProduct) {
+            newProduct.publishedAt = getToday();
             return resolve([newProduct, ...products])
         }
         return reject('An Error occured');
