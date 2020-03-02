@@ -38,18 +38,18 @@ const NavBar: React.FC = () => {
         </Grid.Column>
         <Grid.Column width={8} className="d-flex justify-content-end">
           <div className="links d-flex justify-content-between">
-            <Link to="/" className="link">
+            <Link to="/" className="link text-bold">
               Home
             </Link>
-            <Link to="/about" className="link">
+            <Link to="/about" className="link text-bold">
               About
             </Link>
-            <Link to="/store" className="link">
+            <Link to="/store" className="link text-bold">
               Store
             </Link>
             {user ? (
               <>
-                <Dropdown text={user.username} pointing className="link item">
+                <Dropdown text={user.username} pointing className="link item text-bold">
                   <Dropdown.Menu>
                     <Dropdown.Item
                       onClick={() => history.push('/my-profile')}
@@ -66,7 +66,7 @@ const NavBar: React.FC = () => {
                 </Dropdown>
               </>
             ) : (
-              <Link to="/login" className="link">
+              <Link to="/login" className="link link text-bold">
                 Login
               </Link>
             )}
