@@ -4,6 +4,7 @@ import { Card, Image, Icon, Segment, Feed } from 'semantic-ui-react';
 import BookSmall from '../assets/images/book-mock-small.png';
 
 import LocalStorage from '../utils/localstorage';
+import useWindowResize from '../custom-hooks/useWindowResize';
 
 export interface User {
   id: string;
@@ -16,8 +17,9 @@ export interface User {
 
 const MyProfile: React.FC = () => {
   const user: User = JSON.parse(LocalStorage.getItem('user'));
+  const {currentWidth} = useWindowResize();
   return (
-    <div className="d-flex justify-content-between Layout__container">
+    <div className={`d-flex justify-content-between MyProfile Layout__container ${currentWidth <=468 && 'flex-column align-items-center'}`}>
       <Card className="align-self-start">
         <Card.Content>
           <Image

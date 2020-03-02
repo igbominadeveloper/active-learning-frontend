@@ -123,11 +123,11 @@ const Orders: React.FC<Orders> = ({
 
   return (
     <>
-      <div className="d-flex justify-content-between align-items-center">
-        <div className="d-flex justify-content-end w-50">
+      <div className="d-flex justify-content-between align-items-center Orders">
+        <div className="d-flex justify-content-end w-50 title">
           <h3 className="mb-0">Orders</h3>
         </div>
-        <div className="d-flex justify-content-end w-50">
+        <div className="d-flex justify-content-end w-50 body">
           <Input
             onChange={event => setSearchInput(event.target.value)}
             value={searchInput}
@@ -141,7 +141,7 @@ const Orders: React.FC<Orders> = ({
           </Button>
         </div>
       </div>
-      <Table striped>
+      <Table striped stackable>
         <Header headings={headings} />
         <Table.Body>
           {loading ? (

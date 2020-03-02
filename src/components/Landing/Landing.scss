@@ -7,4 +7,17 @@
     margin: 3rem 0;
     width: 100%;
   }
+
+  @media only screen and (max-width: 768px) {
+    padding: 3rem 2rem !important;
+  }
+
+  @media only screen and (max-width: 425px) {
+    .ui.grid {
+      flex-direction: column;
+    }
+     .ui.grid > [class*="six wide"].column {
+       width: 100% !important;
+    }
+  }
 }

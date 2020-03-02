@@ -13,6 +13,8 @@ import useModal from '../../../custom-hooks/useModal';
 import { useUsersForm } from '../../../custom-hooks/useFormStates';
 import { exportTableToCSV } from '../../../utils/general';
 
+import './Users.scss';
+
 const headings: string[] = ['FullName', 'Email', 'Phone Number', 'Actions'];
 
 type users = User[];
@@ -86,11 +88,11 @@ const Users: React.FC<Users> = ({
 
   return (
     <>
-      <div className="d-flex justify-content-center align-items-center">
-        <div className="d-flex justify-content-end w-50">
+      <div className="d-flex justify-content-center align-items-center Users">
+        <div className="d-flex justify-content-end w-50 title">
           <h3 className="mb-0">Users</h3>
         </div>
-        <div className="d-flex justify-content-end w-50">
+        <div className="d-flex justify-content-end w-50 body">
           <Input
             onChange={event => setSearchInput(event.target.value)}
             value={searchInput}
@@ -105,7 +107,7 @@ const Users: React.FC<Users> = ({
           </Button>
         </div>
       </div>
-      <Table striped>
+      <Table striped stackable>
         <Header headings={headings} />
         <Table.Body>
           {loading ? (

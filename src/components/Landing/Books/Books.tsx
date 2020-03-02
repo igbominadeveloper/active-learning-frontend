@@ -21,7 +21,7 @@ const Books: React.FC<Props> = ({ products }: Props) => {
   return (
     <Grid.Row className="Books text-left">
       <Segment.Group horizontal className="w-100 Books__segments">
-        <Grid columns={16} className="w-100 m-0">
+        <Grid columns={16} className="w-100 m-0 book-section">
           <NewArrivals newArrivals={newArrivals} />
           <AmazingOffers amazingOffers={amazingOffers} />
         </Grid>
