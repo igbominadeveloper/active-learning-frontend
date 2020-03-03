@@ -3,7 +3,7 @@ import React from 'react';
 const AboutPage = () => (
   <>
     <h2>About us</h2>
-    <section className="text-left">
+    <section className="text-left About">
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque at hic facere impedit
         voluptas cum eveniet ut expedita? Asperiores quis quasi quod magni tenetur atque animi autem

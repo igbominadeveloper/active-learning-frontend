@@ -16,4 +16,17 @@
     label {
         margin-right: 10px;
     }
+    
+    @media only screen and (max-width: 425px){
+        .nav-items {
+            flex-direction: column;
+            margin: 1rem auto;
+            .logo {
+                margin: 1rem auto;
+            }
+            .links {
+                justify-content: center;
+            }
+        }
+    }
 }

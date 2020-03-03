@@ -27,11 +27,11 @@ const NavBar: React.FC = () => {
   return (
     <div className="NavBar w-100 d-flex flex-column">
       <div className="align-self-end">
-        <label className="text-bold">Change your language</label>
+        <label>Change your language</label>
         <Select options={languages} placeholder="Select a language" search onChange={handleLanguageChange}/>
       </div>
-      <div className="d-flex align-items-center justify-content-between w-100 p-0">
-        <Grid.Column width={8}>
+      <div className="d-flex align-items-center justify-content-between w-100 p-0 nav-items">
+        <Grid.Column width={8} className="logo">
           <Link to="/">
             <Image src={Logo} style={{ width: '7rem', height: '7rem' }} />
           </Link>

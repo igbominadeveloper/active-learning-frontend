@@ -17,6 +17,7 @@ body {
   background:#FAFAFA !important;
   height: 100%;
   top: 0 !important;
+  min-width: 100%;
 }
 
 body.goog-te-banner {
@@ -30,65 +31,65 @@ body.goog-te-banner {
 
 // Flex
 .d-flex {
-  display: flex !important;
+  display: flex;
 }
 .flex-column {
-  flex-direction: column !important;
+  flex-direction: column;
 }
 .flex-row-reverse {
-  flex-direction: row-reverse !important;
+  flex-direction: row-reverse;
 }
 
 .justify-content-center {
-  justify-content: center !important;
+  justify-content: center;
 }
 .justify-content-start {
-  justify-content: flex-start !important;
+  justify-content: flex-start;
 }
 .justify-content-end {
-  justify-content: flex-end !important;
+  justify-content: flex-end;
 }
 .justify-content-center {
-  justify-content: center !important;
+  justify-content: center;
 }
 .justify-content-between {
-  justify-content: space-between !important;
+  justify-content: space-between;
 }
 .justify-content-evenly {
-  justify-content: space-evenly !important;
+  justify-content: space-evenly;
 }
 .justify-content-around {
-  justify-content: space-around !important;
+  justify-content: space-around;
 }
 .align-items-center {
-  align-items: center !important;
+  align-items: center;
 }
 .align-items-start {
-    align-items: flex-start !important;
+    align-items: flex-start;
 }
 .align-self-center {
-  align-self: center !important;
+  align-self: center;
 }
 .flex-wrap {
-    flex-wrap: wrap !important;
+    flex-wrap: wrap;
 }
 .align-self-end {
-  align-self: flex-end !important;
+  align-self: flex-end;
 }
 .align-self-baseline {
-  align-self: baseline !important;
+  align-self: baseline;
 }
 .align-self-start {
-  align-self: flex-start !important;
+  align-self: flex-start;
 }
 
 // Text
 .uppercase {
-  text-transform: uppercase !important;
+  text-transform: uppercase;
 }
 .text-primary {
-  font-family: $primary_font !important;
-  color: $primary_color !important;
+  font-family: $primary_font;
+  color: $primary_color;
 }
 .text-bold {
   font-weight: bold !important;
@@ -200,3 +201,4 @@ body.goog-te-banner {
 .ui.pagination.menu {
   margin: 25px !important;
 }
+

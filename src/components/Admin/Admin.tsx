@@ -6,12 +6,14 @@ import Users from './Users';
 import Products from './Products';
 import Orders from './Orders';
 
+import './Admin.scss';
+
 const Admin: React.FC = () => {
   const match = useRouteMatch();
 
   return (
-    <div className="d-flex justify-content-between Layout__container">
-      <Card className="align-self-start" style={{ width: '15%' }}>
+    <div className="d-flex justify-content-between Layout__container Admin">
+      <Card className="align-self-start nav-links">
         <Card.Content>
           <Icon name="users" />
           <Link to={`${match.url}`}>Manage Users</Link>
@@ -26,7 +28,7 @@ const Admin: React.FC = () => {
         </Card.Content>
       </Card>
       
-      <Segment style={{ width: '80%' }} className="m-0">
+      <Segment className="m-0 main-content">
         <Switch>
           <Route path={`${match.url}`} exact component={Users} />
           <Route path={`${match.url}/products`} exact component={Products} />
