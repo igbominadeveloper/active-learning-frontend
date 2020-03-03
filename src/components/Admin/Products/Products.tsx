@@ -3,7 +3,7 @@ import { Table, Button, Icon, Pagination, Input } from 'semantic-ui-react';
 
 import Header from '../Tables/Header';
 import ProductRow from '../Tables/ProductRow';
-import EditProduct from './EditProduct';
+import EditProduct from './AddEditProduct';
 import DecisionModal from '../../DecisionModal';
 import RowPlaceholder from '../Tables/RowPlaceholder';
 

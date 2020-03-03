@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 
 import { User } from '../../../../pages/MyProfile';
 
-interface EditUserProps {
+interface AddEditUserProps {
   open: boolean;
   close: any;
   editUserData: Function;
@@ -16,7 +16,7 @@ interface EditUserProps {
   clearSuccess: Function;
 }
 
-const EditUser: React.FC<any> = (props: EditUserProps) => {
+const AddEditUser: React.FC<any> = (props: AddEditUserProps) => {
 
   const [email, setEmail] = useState(props.user.email)
   const [username, setUserName] = useState(props.user.username);
@@ -105,7 +105,7 @@ const EditUser: React.FC<any> = (props: EditUserProps) => {
   );
 };
 
-EditUser.propTypes = {
+AddEditUser.propTypes = {
   open: PropTypes.bool.isRequired,
   close: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired,
@@ -113,4 +113,4 @@ EditUser.propTypes = {
   operationSuccess: PropTypes.bool.isRequired,
 };
 
-export default EditUser;
+export default AddEditUser;

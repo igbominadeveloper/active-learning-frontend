@@ -12,7 +12,7 @@ enum mode {
   EDIT = 'EDIT',
   ADD = 'ADD',
 }
-interface EditOrderProps {
+interface AddEditOrderProps {
   open: boolean;
   close: any;
   editOrderData: Function;
@@ -27,7 +27,7 @@ interface EditOrderProps {
   products: Book[];
 }
 
-const EditOrder: React.FC<any> = (props: EditOrderProps) => {
+const AddEditOrder: React.FC<any> = (props: AddEditOrderProps) => {
   const [productName, setProductName] = useState(
     props.mode === 'EDIT' ? props.order.productName : ''
   );
@@ -178,7 +178,7 @@ const EditOrder: React.FC<any> = (props: EditOrderProps) => {
   );
 };
 
-EditOrder.propTypes = {
+AddEditOrder.propTypes = {
   open: PropTypes.bool.isRequired,
   close: PropTypes.func.isRequired,
   order: PropTypes.object.isRequired,
@@ -186,4 +186,4 @@ EditOrder.propTypes = {
   operationSuccess: PropTypes.bool.isRequired,
 };
 
-export default EditOrder;
+export default AddEditOrder;
