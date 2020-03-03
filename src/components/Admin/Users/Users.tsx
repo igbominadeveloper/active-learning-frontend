@@ -4,7 +4,7 @@ import { Table, Button, Icon, Pagination, Input } from 'semantic-ui-react';
 import Header from '../Tables/Header';
 import UserRow from '../Tables/UserRow';
 import DecisionModal from '../../DecisionModal';
-import EditUser from './EditUser';
+import EditUser from './AddEditUser';
 import RowPlaceholder from '../Tables/RowPlaceholder';
 
 import { User } from '../../../pages/MyProfile';

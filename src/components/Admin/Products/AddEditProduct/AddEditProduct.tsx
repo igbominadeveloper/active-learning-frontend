@@ -9,7 +9,7 @@ enum mode {
   EDIT = 'EDIT',
   ADD = 'ADD',
 }
-interface EditProductProps {
+interface AddEditProductProps {
   open: boolean;
   close: any;
   editProductData: Function;
@@ -22,7 +22,7 @@ interface EditProductProps {
   addANewProduct: Function;
 }
 
-const EditProduct: React.FC<any> = (props: EditProductProps) => {
+const AddEditProduct: React.FC<any> = (props: AddEditProductProps) => {
   const [name, setName] = useState(props.mode === 'EDIT' ? props.product.name : '');
   const [author, setAuthor] = useState(props.mode === 'EDIT' ? props.product.author : '');
   const [specialOffer, setSpecialOffer] = useState(
@@ -143,7 +143,7 @@ const EditProduct: React.FC<any> = (props: EditProductProps) => {
   );
 };
 
-EditProduct.propTypes = {
+AddEditProduct.propTypes = {
   open: PropTypes.bool.isRequired,
   close: PropTypes.func.isRequired,
   product: PropTypes.object.isRequired,
@@ -151,4 +151,4 @@ EditProduct.propTypes = {
   operationSuccess: PropTypes.bool.isRequired,
 };
 
-export default EditProduct;
+export default AddEditProduct;
