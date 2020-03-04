@@ -11,15 +11,18 @@ import './assets/styles/global.scss';
 import 'semantic-ui-css/semantic.min.css';
 
 import * as serviceWorker from './serviceWorker';
+import ErrorBoundary from './components/ErrorBoundary';
 
 const store = configureStore();
 
 ReactDOM.render(
-  <Provider store={store}>
-    <Router>
-      <App />
-    </Router>
-  </Provider>,
+  <ErrorBoundary>
+    <Provider store={store}>
+      <Router>
+        <App />
+      </Router>
+    </Provider>
+  </ErrorBoundary>,
   document.getElementById('root')
 );
 

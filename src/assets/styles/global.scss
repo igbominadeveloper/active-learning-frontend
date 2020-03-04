@@ -202,3 +202,20 @@ body.goog-te-banner {
   margin: 25px !important;
 }
 
+.page-500 {
+  flex-direction: column !important;
+  height: 100vh;
+  .illustration {
+    width: 53%;
+    height: 60%;
+    align-self: center;
+    margin-bottom: 4rem !important;
+  }
+  .refresh {
+    color: $primary_black !important;
+    &:hover{
+      color: $primary_white !important;
+    }
+  }
+}
+
