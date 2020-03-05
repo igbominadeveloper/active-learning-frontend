@@ -1,0 +1,31 @@
+.Hero {
+    margin-bottom: 3.5rem;
+    &__text-main {
+        font-size: 48px;
+    }
+    &__text-sub {
+        font-size: 30px;
+    }
+    p {
+        word-break: 'break-all';
+    }
+    &__segments {
+        border: none !important;
+        box-shadow: none !important;
+        background: none !important;
+    }
+
+    @media only screen and (max-width: 425px){
+        &__text-main {
+            font-size: 35px;
+            text-align: center;
+        }
+        &__text-sub {
+            font-size: 15px;
+            text-align: center;
+        }
+        p {
+            text-align: justify;
+        }
+    }
+}

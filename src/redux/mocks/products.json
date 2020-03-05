@@ -1,0 +1,242 @@
+[
+  {
+    "id": "_975895",
+    "name": "The Mamba Mentality",
+    "publishedAt": "2020-01-13",
+    "author": "Kobe Bryant",
+    "description": "lorem ipsum dolor etal",
+    "specialOffer": true,
+    "cover": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fs3.amazonaws.com%2Fmcdbookimages%2Fbooks%2Fcover_images%2F000%2F000%2F108%2Freg%2FMambacover.jpg%3F1528406098&f=1&nofb=1",
+    "language": "English"
+  },
+  {
+    "id": "_975896",
+    "name": "Empty Alley",
+    "publishedAt": "2019-02-13",
+    "author": "Ervin Howell",
+    "description": "lorem ipsum dolor etal",
+    "specialOffer": false,
+    "cover": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages-na.ssl-images-amazon.com%2Fimages%2FI%2F41bINltMXOL._SY291_BO1%2C204%2C203%2C200_QL40_.jpg&f=1&nofb=1",
+    "language": "Romanian"
+  },
+  {
+    "id": "_975897",
+    "name": "Khan's Vow",
+    "publishedAt": "2020-01-01",
+    "author": "Clementine Bauch",
+    "description": "lorem ipsum dolor etal",
+    "specialOffer": false,
+    "cover": "https://react.semantic-ui.com/images/wireframe/square-image.png",
+    "language": "English"
+  },
+  {
+    "id": "_975899",
+    "name": "The Screaming Maple",
+    "publishedAt": "2019-03-13",
+    "author": "Patricia Lebsack",
+    "description": "lorem ipsum dolor etal",
+    "specialOffer": true,
+    "cover": "https://react.semantic-ui.com/images/wireframe/square-image.png",
+    "language": "Romanian"
+  },
+  {
+    "id": "_975893",
+    "name": "The Midnight Bride",
+    "publishedAt": "2010-02-13",
+    "author": "Chelsey Dietrich",
+    "description": "lorem ipsum dolor etal",
+    "specialOffer": false,
+    "cover": "https://react.semantic-ui.com/images/wireframe/square-image.png",
+    "language": "English"
+  },
+  {
+    "id": "_975892",
+    "name": "The Shadow Gorge",
+    "publishedAt": "2009-02-13",
+    "author": "Mrs. Dennis Schulist",
+    "description": "lorem ipsum dolor etal",
+    "specialOffer": false,
+    "cover": "https://react.semantic-ui.com/images/wireframe/square-image.png",
+    "language": "Romanian"
+  },
+  {
+    "id": "_975885",
+    "name": "The Global Brand",
+    "publishedAt": "2018-02-13",
+    "author": "Leanne Graham",
+    "description": "lorem ipsum dolor etal",
+    "specialOffer": true,
+    "cover": "https://react.semantic-ui.com/images/wireframe/square-image.png",
+    "language": "English"
+  },
+  {
+    "id": "_975886",
+    "name": "Book of Iron",
+    "publishedAt": "2019-06-12",
+    "author": "Ervin Howell",
+    "description": "lorem ipsum dolor etal",
+    "specialOffer": false,
+    "cover": "https://react.semantic-ui.com/images/wireframe/square-image.png",
+    "language": "Romanian"
+  },
+  {
+    "id": "_975887",
+    "name": "Children of Wolves",
+    "publishedAt": "2019-04-19",
+    "author": "Clementine Bauch",
+    "description": "lorem ipsum dolor etal",
+    "specialOffer": false,
+    "cover": "https://react.semantic-ui.com/images/wireframe/square-image.png",
+    "language": "English"
+  },
+  {
+    "id": "_975889",
+    "name": "The Painted Pendant",
+    "publishedAt": "2020-01-05",
+    "author": "Patricia Lebsack",
+    "description": "lorem ipsum dolor etal",
+    "specialOffer": true,
+    "cover": "https://react.semantic-ui.com/images/wireframe/square-image.png",
+    "language": "Romanian"
+  },
+  {
+    "id": "_975883",
+    "name": "Year of Goodbyes",
+    "publishedAt": "2019-10-10",
+    "author": "Chelsey Dietrich",
+    "description": "lorem ipsum dolor etal",
+    "specialOffer": false,
+    "cover": "https://react.semantic-ui.com/images/wireframe/square-image.png",
+    "language": "English"
+  },
+  {
+    "id": "_975882",
+    "name": "Texan Born",
+    "publishedAt": "2019-06-20",
+    "author": "Mrs. Dennis Schulist",
+    "description": "lorem ipsum dolor etal",
+    "specialOffer": false,
+    "cover": "https://react.semantic-ui.com/images/wireframe/square-image.png",
+    "language": "Romanian"
+  },
+  {
+    "id": "_975795",
+    "name": "Satan on Wheels",
+    "publishedAt": "2020-01-07",
+    "author": "Leanne Graham",
+    "description": "lorem ipsum dolor etal",
+    "specialOffer": true,
+    "cover": "https://react.semantic-ui.com/images/wireframe/square-image.png",
+    "language": "English"
+  },
+  {
+    "id": "_975796",
+    "name": "City of Fog",
+    "publishedAt": "2018-02-13",
+    "author": "Ervin Howell",
+    "description": "lorem ipsum dolor etal",
+    "specialOffer": false,
+    "cover": "https://react.semantic-ui.com/images/wireframe/square-image.png",
+    "language": "Romanian"
+  },
+  {
+    "id": "_975797",
+    "name": "The Singing Baboon",
+    "publishedAt": "2019-12-13",
+    "author": "Clementine Bauch",
+    "description": "lorem ipsum dolor etal",
+    "specialOffer": false,
+    "cover": "https://react.semantic-ui.com/images/wireframe/square-image.png",
+    "language": "English"
+  },
+  {
+    "id": "_975799",
+    "name": "The Son of the Prey",
+    "publishedAt": "2020-02-13",
+    "author": "Patricia Lebsack",
+    "description": "lorem ipsum dolor etal",
+    "specialOffer": false,
+    "cover": "https://react.semantic-ui.com/images/wireframe/square-image.png",
+    "language": "Romanian"
+  },
+  {
+    "id": "_975793",
+    "name": "Bound for Sorrow",
+    "publishedAt": "2019-02-13",
+    "author": "Chelsey Dietrich",
+    "description": "lorem ipsum dolor etal",
+    "specialOffer": false,
+    "cover": "https://react.semantic-ui.com/images/wireframe/square-image.png",
+    "language": "English"
+  },
+  {
+    "id": "_975792",
+    "name": "Little Heaven",
+    "publishedAt": "2019-02-02",
+    "author": "Mrs. Dennis Schulist",
+    "description": "lorem ipsum dolor etal",
+    "specialOffer": false,
+    "cover": "https://react.semantic-ui.com/images/wireframe/square-image.png",
+    "language": "Romanian"
+  },
+  {
+    "id": "_975595",
+    "name": "Belonging Season",
+    "publishedAt": "2020-02-09",
+    "author": "Leanne Graham",
+    "description": "lorem ipsum dolor etal",
+    "specialOffer": false,
+    "cover": "https://react.semantic-ui.com/images/wireframe/square-image.png",
+    "language": "English"
+  },
+  {
+    "id": "_975596",
+    "name": "The House Widow",
+    "publishedAt": "2019-04-19",
+    "author": "Ervin Howell",
+    "description": "lorem ipsum dolor etal",
+    "specialOffer": false,
+    "cover": "https://react.semantic-ui.com/images/wireframe/square-image.png",
+    "language": "Romanian"
+  },
+  {
+    "id": "_975597",
+    "name": "After the Future",
+    "publishedAt": "2019-06-13",
+    "author": "Clementine Bauch",
+    "description": "lorem ipsum dolor etal",
+    "specialOffer": false,
+    "cover": "https://react.semantic-ui.com/images/wireframe/square-image.png",
+    "language": "English"
+  },
+  {
+    "id": "_975599",
+    "name": "The Damned Voice",
+    "publishedAt": "2020-02-04",
+    "author": "Patricia Lebsack",
+    "description": "lorem ipsum dolor etal",
+    "specialOffer": false,
+    "cover": "https://react.semantic-ui.com/images/wireframe/square-image.png",
+    "language": "Romanian"
+  },
+  {
+    "id": "_975593",
+    "name": "Licensed for Duty",
+    "publishedAt": "2020-01-05",
+    "author": "Chelsey Dietrich",
+    "description": "lorem ipsum dolor etal",
+    "specialOffer": false,
+    "cover": "https://react.semantic-ui.com/images/wireframe/square-image.png",
+    "language": "English"
+  },
+  {
+    "id": "_975592",
+    "name": "Crimson Exile",
+    "publishedAt": "2020-01-13",
+    "author": "Mrs. Dennis Schulist",
+    "description": "lorem ipsum dolor etal",
+    "specialOffer": false,
+    "cover": "https://react.semantic-ui.com/images/wireframe/square-image.png",
+    "language": "Romanian"
+  }
+]

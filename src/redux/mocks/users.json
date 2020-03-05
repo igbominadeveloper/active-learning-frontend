@@ -1,0 +1,137 @@
+[
+  {
+    "id": "_975895",
+    "username": "igbominadeveloper",
+    "email": "favourafolayan@gmail.com",
+    "password": "password1",
+    "phone": "08135586949",
+    "fullName": "Favour Afolayan",
+    "role": "ADMIN"
+  },
+  {
+    "id": "_975896",
+    "username": "johndoe",
+    "email": "john@example.com",
+    "password": "password1",
+    "phone": "08135586949",
+    "fullName": "John Doe",
+    "role": "USER"
+  },
+  {
+    "id": "_975897",
+    "username": "janedoe",
+    "email": "jane@example.com",
+    "password": "password1",
+    "phone": "08135586949",
+    "fullName": "Jane Doe",
+    "role": "ADMIN"
+  },
+  {
+    "id": "_975885",
+    "username": "Bret",
+    "email": "Sincere@april.biz",
+    "password": "password1",
+    "phone": "1770736803156442",
+    "fullName": "Leanne Graham",
+    "role": "ADMIN"
+  },
+  {
+    "id": "_975886",
+    "username": "Antonette",
+    "email": "Shanna@melissa.tv",
+    "password": "password1",
+    "phone": "010692659309125",
+    "fullName": "Ervin Howell",
+    "role": "USER"
+  },
+  {
+    "id": "_975887",
+    "username": "Samantha",
+    "email": "Nathan@yesenia.net",
+    "password": "password1",
+    "phone": "14631234447",
+    "fullName": "Clementine Bauch",
+    "role": "ADMIN"
+  },
+  {
+    "id": "_975891",
+    "username": "Karianne",
+    "email": "Julianne.OConner@kory.org",
+    "password": "password1",
+    "phone": "4931709623156",
+    "fullName": "Patricia Lebsack",
+    "role": "ADMIN"
+  },
+  {
+    "id": "_985896",
+    "username": "Kamren",
+    "email": "Lucio_Hettinger@annie.ca",
+    "password": "password1",
+    "phone": "2549541289",
+    "fullName": "Chelsey Dietrich",
+    "role": "USER"
+  },
+  {
+    "id": "_977897",
+    "username": "Leopoldo_Corkery",
+    "email": "Karley_Dach@jasper.info",
+    "password": "password1",
+    "phone": "147793584786430",
+    "fullName": "Mrs. Dennis Schulist",
+    "role": "ADMIN"
+  },
+  {
+    "id": "_976895",
+    "username": "Elwyn.Skiles",
+    "email": "Telly.Hoeger@billy.biz",
+    "password": "password1",
+    "phone": "2100676132",
+    "fullName": "Kurtis Weissnat",
+    "role": "ADMIN"
+  },
+  {
+    "id": "_970096",
+    "username": "Maxime_Nienow",
+    "email": "Sherwood@rosamond.me",
+    "password": "password1",
+    "phone": "5864936943140",
+    "fullName": "Nicholas Runolfsdottir V",
+    "role": "USER"
+  },
+  {
+    "id": "_9756697",
+    "username": "Delphine",
+    "email": "Chaim_McDermott@dana.io",
+    "password": "password1",
+    "phone": "976679441206",
+    "fullName": "Glenna Reichert",
+    "role": "ADMIN"
+  },
+  {
+    "id": "_97521895",
+    "username": "Moriah.Stanton",
+    "email": "Rey.Padberg@karina.biz",
+    "password": "password1",
+    "phone": "0246483804",
+    "fullName": "Clementina DuBuque",
+    "role": "ADMIN"
+  },
+  {
+    "id": "_9758921346",
+    "username": "KattieTurnpike",
+    "email": "katie@example.com",
+    "password": "password1",
+    "phone": "08135586949",
+    "fullName": "Kattie Turnpike",
+    "role": "USER"
+  },
+  {
+    "id": "_975897000",
+    "username": "HoegerLLC",
+    "email": "hoeger@example.com",
+    "password": "password1",
+    "phone": "08135586949",
+    "fullName": "Hoeger LLC",
+    "role": "ADMIN"
+  }
+]

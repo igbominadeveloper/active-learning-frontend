@@ -1,0 +1,32 @@
+[
+  {
+    "value": "en",
+    "flag": "gb",
+    "text": "English",
+    "key": "English"
+  },
+  {
+    "value": "fr",
+    "flag": "fr",
+    "text": "French",
+    "key": "français, langue française"
+  },
+  {
+    "value": "ro",
+    "flag": "ro",
+    "text": "Romanian, Moldavian, Moldovan",
+    "key": "română"
+  },
+  {
+    "value": "es",
+    "flag": "es",
+    "text": "Spanish; Castilian",
+    "key": "español, castellano"
+  },
+  {
+    "value": "yo",
+    "flag": "ng",
+    "text": "Yoruba",
+    "key": "Yorùbá"
+  }
+]

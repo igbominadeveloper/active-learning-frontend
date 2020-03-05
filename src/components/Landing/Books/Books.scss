@@ -1,0 +1,27 @@
+@import '../../../assets/styles/variables';
+
+.Books {
+    margin-top: -5rem;
+    .books-section {
+        padding: 2rem 0 !important;
+    }
+
+    .details {
+        margin: 0rem 1rem;
+    }
+    &__segments {
+        border: none !important;
+        box-shadow: none !important;
+        background: none !important;
+    }
+
+    @media only screen and (max-width: 425px){
+        .book-section {
+            margin-top: 2rem !important;
+        }
+
+        div.books-section {
+            width: 100% !important;
+        }
+    }
+}
